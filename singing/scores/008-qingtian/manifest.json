@@ -1,0 +1,54 @@
+{
+  "schema_version": "singing-score-asset/v1",
+  "song_id": "008",
+  "slug": "qingtian",
+  "title": "晴天",
+  "artist": "周杰伦",
+  "status": "OWNER_LISTENING_ACCEPTED",
+  "method": {
+    "engine": "SoulX-Singer",
+    "task": "SVS",
+    "control": "continuous_f0",
+    "voice_id": "serena-v1",
+    "source_performance_artist": "蓝心羽",
+    "fixed_reference": true,
+    "candidate_seeds": [88405783, 72943910, 56941294, 72571494, 48500562]
+  },
+  "segments": [
+    {
+      "id": "chunk-01",
+      "score": "chunks/chunk-01.soulx.json",
+      "lyrics": "刮风这天我试过握着你手但偏偏雨渐渐大到我看你不见",
+      "duration_seconds": 13.11,
+      "pitch_shift": -3,
+      "selected_seed": 72943910,
+      "sha256": "a942147f61b49297ecccee7173f2175b7a9e6c7b100306225342cb994a51d007"
+    },
+    {
+      "id": "chunk-02",
+      "score": "chunks/chunk-02.soulx.json",
+      "lyrics": "还要多久我才能在你身边",
+      "duration_seconds": 9.17,
+      "pitch_shift": -7,
+      "selected_seed": 72943910,
+      "sha256": "a90568500c6a7c6b18e67a33127b071b4f1c113aeb7c41221caf88a80e920de0"
+    },
+    {
+      "id": "chunk-03",
+      "score": "chunks/chunk-03.soulx.json",
+      "lyrics": "等到放晴的那天也许我会比较好一点",
+      "duration_seconds": 8.58,
+      "pitch_shift": -5,
+      "selected_seed": 72943910,
+      "sha256": "9c9f31ab1c8daea1d53f63cf8cc792259078fca6dff746640ac83bc4fce092ba"
+    }
+  ],
+  "playback": {
+    "asset": "serena/008-qingtian.wav",
+    "duration_seconds": 30.86,
+    "sample_rate": 16000,
+    "channels": 1,
+    "sample_format": "pcm_s16le",
+    "sha256": "b6c5db43a3b15a687332e2df030bdb52949d6b7e0479ff8a1d18ad1101850419"
+  }
+}

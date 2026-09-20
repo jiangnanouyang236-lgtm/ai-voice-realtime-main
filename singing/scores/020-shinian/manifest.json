@@ -1,0 +1,66 @@
+{
+  "schema_version": "singing-score-asset/v1",
+  "song_id": "020",
+  "slug": "shinian",
+  "title": "十年",
+  "artist": "陈奕迅",
+  "status": "IMPLEMENTED",
+  "method": {
+    "engine": "SoulX-Singer",
+    "task": "SVS",
+    "control": "continuous_f0",
+    "voice_id": "serena-v1",
+    "source_performance_artist": "赵丽颖",
+    "fixed_reference": true,
+    "candidate_seeds": [
+      88405783,
+      72943910,
+      56941294,
+      72571494,
+      48500562
+    ]
+  },
+  "segments": [
+    {
+      "id": "chunk-01",
+      "score": "chunks/chunk-01.soulx.json",
+      "lyrics": "我不会发现我难受怎么说出口也不过是分手",
+      "duration_seconds": 9.97,
+      "pitch_shift": 0,
+      "selected_seed": 48500562,
+      "asr_similarity": 1.0,
+      "pinyin_similarity": 1.0,
+      "sha256": "e5f19ccd0e28b7c12a89f872a9d4cb09d292e6eb0a371a6ea81e061415fe4c56"
+    },
+    {
+      "id": "chunk-02",
+      "score": "chunks/chunk-02.soulx.json",
+      "lyrics": "如果对于明天没有要求牵牵手",
+      "duration_seconds": 6.58,
+      "pitch_shift": -5,
+      "selected_seed": 48500562,
+      "asr_similarity": 0.8333,
+      "pinyin_similarity": 0.9737,
+      "sha256": "61b3f63b1461182e489f05b4f814597833ca270aa642068db98970f57a72cad0"
+    },
+    {
+      "id": "chunk-03",
+      "score": "chunks/chunk-03.soulx.json",
+      "lyrics": "就像旅游成千上万个门口总有一个人要先走怀抱居然不能",
+      "duration_seconds": 13.43,
+      "pitch_shift": -2,
+      "selected_seed": 88405783,
+      "asr_similarity": 0.84,
+      "pinyin_similarity": 1.0,
+      "sha256": "481e8a381d20c1277af62e98625e2258399ce3c297f4b229aff12736f4f8e27a"
+    }
+  ],
+  "playback": {
+    "asset": "serena/020-shinian.wav",
+    "duration_seconds": 29.98,
+    "sample_rate": 16000,
+    "channels": 1,
+    "sample_format": "pcm_s16le",
+    "sha256": "1eaad50195fdef39f5acab06ad71f775294a62b91e667b87ac09676852a8114a"
+  }
+}

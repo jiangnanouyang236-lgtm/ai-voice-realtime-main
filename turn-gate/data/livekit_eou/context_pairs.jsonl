@@ -1,0 +1,28 @@
+{"id": "st-a-001-without", "pair_id": "st-a-001", "category": "clear_end", "context": [], "text": "帮我查一下今天青岛的天气。", "ground_truth": "END", "context_mode": "without_context"}
+{"id": "st-a-001-with", "pair_id": "st-a-001", "category": "clear_end", "context": [{"role": "assistant", "text": "你想查询什么信息？"}], "text": "帮我查一下今天青岛的天气。", "ground_truth": "END", "context_mode": "with_context"}
+{"id": "st-b-001-without", "pair_id": "st-b-001", "category": "incomplete", "context": [], "text": "如果明天下雨的话", "ground_truth": "CONTINUE", "context_mode": "without_context"}
+{"id": "st-b-001-with", "pair_id": "st-b-001", "category": "incomplete", "context": [{"role": "assistant", "text": "如果明天下雨，你准备怎么办？"}], "text": "如果明天下雨的话", "ground_truth": "CONTINUE", "context_mode": "with_context"}
+{"id": "st-g-001-without", "pair_id": "st-g-001", "category": "number_address", "context": [], "text": "我的手机号是 138", "ground_truth": "CONTINUE", "context_mode": "without_context"}
+{"id": "st-g-001-with", "pair_id": "st-g-001", "category": "number_address", "context": [{"role": "assistant", "text": "请告诉我你的手机号。"}], "text": "我的手机号是 138", "ground_truth": "CONTINUE", "context_mode": "with_context"}
+{"id": "st-j-001-without", "pair_id": "st-j-001", "category": "short_answer", "context": [], "text": "可以。", "ground_truth": "END", "context_mode": "without_context"}
+{"id": "st-j-001-with", "pair_id": "st-j-001", "category": "short_answer", "context": [{"role": "assistant", "text": "这个方案可以继续吗？"}], "text": "可以。", "ground_truth": "END", "context_mode": "with_context"}
+{"id": "st-a-002-without", "pair_id": "st-a-002", "category": "clear_end", "context": [], "text": "把客厅的灯打开。", "ground_truth": "END", "context_mode": "without_context"}
+{"id": "st-a-002-with", "pair_id": "st-a-002", "category": "clear_end", "context": [{"role": "assistant", "text": "你想控制哪个设备？"}], "text": "把客厅的灯打开。", "ground_truth": "END", "context_mode": "with_context"}
+{"id": "st-a-003-without", "pair_id": "st-a-003", "category": "clear_end", "context": [], "text": "明天早上八点提醒我开会。", "ground_truth": "END", "context_mode": "without_context"}
+{"id": "st-a-003-with", "pair_id": "st-a-003", "category": "clear_end", "context": [{"role": "assistant", "text": "你希望我什么时候提醒你？"}], "text": "明天早上八点提醒我开会。", "ground_truth": "END", "context_mode": "with_context"}
+{"id": "st-g-001-end-without", "pair_id": "st-g-001-end", "category": "number_address", "context": [], "text": "我的手机号是 138 5678 9012。", "ground_truth": "END", "context_mode": "without_context"}
+{"id": "st-g-001-end-with", "pair_id": "st-g-001-end", "category": "number_address", "context": [{"role": "assistant", "text": "请告诉我你的手机号。"}], "text": "我的手机号是 138 5678 9012。", "ground_truth": "END", "context_mode": "with_context"}
+{"id": "st-g-002-mid-without", "pair_id": "st-g-002-mid", "category": "number_address", "context": [], "text": "服务器地址是 192.168", "ground_truth": "CONTINUE", "context_mode": "without_context"}
+{"id": "st-g-002-mid-with", "pair_id": "st-g-002-mid", "category": "number_address", "context": [{"role": "assistant", "text": "服务器地址是什么？"}], "text": "服务器地址是 192.168", "ground_truth": "CONTINUE", "context_mode": "with_context"}
+{"id": "st-g-002-end-without", "pair_id": "st-g-002-end", "category": "number_address", "context": [], "text": "服务器地址是 192.168.1.20。", "ground_truth": "END", "context_mode": "without_context"}
+{"id": "st-g-002-end-with", "pair_id": "st-g-002-end", "category": "number_address", "context": [{"role": "assistant", "text": "服务器地址是什么？"}], "text": "服务器地址是 192.168.1.20。", "ground_truth": "END", "context_mode": "with_context"}
+{"id": "st-g-003-mid-without", "pair_id": "st-g-003-mid", "category": "number_address", "context": [], "text": "订单号是 202608", "ground_truth": "CONTINUE", "context_mode": "without_context"}
+{"id": "st-g-003-mid-with", "pair_id": "st-g-003-mid", "category": "number_address", "context": [{"role": "assistant", "text": "请告诉我订单号。"}], "text": "订单号是 202608", "ground_truth": "CONTINUE", "context_mode": "with_context"}
+{"id": "st-g-004-mid-without", "pair_id": "st-g-004-mid", "category": "number_address", "context": [], "text": "地址是山东省青岛市", "ground_truth": "CONTINUE", "context_mode": "without_context"}
+{"id": "st-g-004-mid-with", "pair_id": "st-g-004-mid", "category": "number_address", "context": [{"role": "assistant", "text": "请告诉我你的地址。"}], "text": "地址是山东省青岛市", "ground_truth": "CONTINUE", "context_mode": "with_context"}
+{"id": "st-j-002-without", "pair_id": "st-j-002", "category": "short_answer", "context": [], "text": "不用。", "ground_truth": "END", "context_mode": "without_context"}
+{"id": "st-j-002-with", "pair_id": "st-j-002", "category": "short_answer", "context": [{"role": "assistant", "text": "还需要继续吗？"}], "text": "不用。", "ground_truth": "END", "context_mode": "with_context"}
+{"id": "st-j-003-without", "pair_id": "st-j-003", "category": "short_answer", "context": [], "text": "明天。", "ground_truth": "END", "context_mode": "without_context"}
+{"id": "st-j-003-with", "pair_id": "st-j-003", "category": "short_answer", "context": [{"role": "assistant", "text": "你准备什么时候处理？"}], "text": "明天。", "ground_truth": "END", "context_mode": "with_context"}
+{"id": "st-j-004-without", "pair_id": "st-j-004", "category": "short_answer", "context": [], "text": "八点。", "ground_truth": "END", "context_mode": "without_context"}
+{"id": "st-j-004-with", "pair_id": "st-j-004", "category": "short_answer", "context": [{"role": "assistant", "text": "闹钟要设置在几点？"}], "text": "八点。", "ground_truth": "END", "context_mode": "with_context"}

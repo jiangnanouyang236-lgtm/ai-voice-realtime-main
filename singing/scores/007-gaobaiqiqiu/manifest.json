@@ -1,0 +1,54 @@
+{
+  "schema_version": "singing-score-asset/v1",
+  "song_id": "007",
+  "slug": "gaobaiqiqiu",
+  "title": "告白气球",
+  "artist": "周杰伦",
+  "status": "OWNER_LISTENING_ACCEPTED",
+  "method": {
+    "engine": "SoulX-Singer",
+    "task": "SVS",
+    "control": "continuous_f0",
+    "voice_id": "serena-v1",
+    "source_performance_artist": "二珂",
+    "fixed_reference": true,
+    "candidate_seeds": [88405783, 72943910, 56941294, 72571494, 48500562]
+  },
+  "segments": [
+    {
+      "id": "chunk-01",
+      "score": "chunks/chunk-01.soulx.json",
+      "lyrics": "营造浪漫的约会不害怕搞砸一切拥有你就拥有",
+      "duration_seconds": 7.38,
+      "pitch_shift": -6,
+      "selected_seed": 56941294,
+      "sha256": "11954efc0fa856d8ca13d9700dd7470e9a0ff0902e8c0d591a77ec4609c39a24"
+    },
+    {
+      "id": "chunk-02",
+      "score": "chunks/chunk-02.soulx.json",
+      "lyrics": "全世界亲爱的爱上你从那天起甜蜜得很轻易",
+      "duration_seconds": 12.81,
+      "pitch_shift": -6,
+      "selected_seed": 72571494,
+      "sha256": "1a122870f070323f2c2307ed4fc1861dffab62b353ae145cdb95fb567ce98a7e"
+    },
+    {
+      "id": "chunk-03",
+      "score": "chunks/chunk-03.soulx.json",
+      "lyrics": "亲爱的别任性你的眼睛在说我愿意",
+      "duration_seconds": 10.77,
+      "pitch_shift": -7,
+      "selected_seed": 72943910,
+      "sha256": "6c383386f459c1283b18990edfb37dbe03a2a147005b403453860fd6b5940268"
+    }
+  ],
+  "playback": {
+    "asset": "serena/007-gaobaiqiqiu.wav",
+    "duration_seconds": 30.96,
+    "sample_rate": 16000,
+    "channels": 1,
+    "sample_format": "pcm_s16le",
+    "sha256": "d5afedfa72b5dda506cff8c25d22bcfe0790d45fea1e25a52b8d7a931f352bb2"
+  }
+}

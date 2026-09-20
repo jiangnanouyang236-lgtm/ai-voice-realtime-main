@@ -1,0 +1,66 @@
+{
+  "schema_version": "singing-score-asset/v1",
+  "song_id": "018",
+  "slug": "turanhaoxiangni",
+  "title": "突然好想你",
+  "artist": "五月天",
+  "status": "IMPLEMENTED",
+  "method": {
+    "engine": "SoulX-Singer",
+    "task": "SVS",
+    "control": "continuous_f0",
+    "voice_id": "serena-v1",
+    "source_performance_artist": "许飞",
+    "fixed_reference": true,
+    "candidate_seeds": [
+      88405783,
+      72943910,
+      56941294,
+      72571494,
+      48500562
+    ]
+  },
+  "segments": [
+    {
+      "id": "chunk-01",
+      "score": "chunks/chunk-01.soulx.json",
+      "lyrics": "突然翻滚敲通着不平息最怕突然听到你的",
+      "duration_seconds": 8.92,
+      "pitch_shift": -3,
+      "selected_seed": 72943910,
+      "asr_similarity": 0.9444,
+      "pinyin_similarity": 0.9804,
+      "sha256": "59db3bd1bebfa76fc5133370eb816fa6625373e531c86b178cf4bad102e06e6e"
+    },
+    {
+      "id": "chunk-02",
+      "score": "chunks/chunk-02.soulx.json",
+      "lyrics": "消息想念如果会有声音",
+      "duration_seconds": 10.84,
+      "pitch_shift": 3,
+      "selected_seed": 56941294,
+      "asr_similarity": 1.0,
+      "pinyin_similarity": 1.0,
+      "sha256": "0c7bd730a94c4fb73b895228b6c78349729f07dfa992a89a9587ebbf2ff2b570"
+    },
+    {
+      "id": "chunk-03",
+      "score": "chunks/chunk-03.soulx.json",
+      "lyrics": "不愿那是悲伤的哭泣事到如今终于让自己",
+      "duration_seconds": 10.2,
+      "pitch_shift": -2,
+      "selected_seed": 48500562,
+      "asr_similarity": 0.9444,
+      "pinyin_similarity": 1.0,
+      "sha256": "9f8d2d8d7eda2f59b2a5b170545221e0002fb92238ef7605110ff8451cd646dc"
+    }
+  ],
+  "playback": {
+    "asset": "serena/018-turanhaoxiangni.wav",
+    "duration_seconds": 29.96,
+    "sample_rate": 16000,
+    "channels": 1,
+    "sample_format": "pcm_s16le",
+    "sha256": "482d1b5490fe15c2ca6589daa3c40cf002d4e6d69a212c68f9ec540d8335b8b4"
+  }
+}

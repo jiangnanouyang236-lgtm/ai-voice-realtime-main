@@ -1,0 +1,33 @@
+{
+  "schema_version": 1,
+  "captured_at": null,
+  "models": {
+    "smart_turn_v3": {
+      "repository": null,
+      "revision": null,
+      "onnx_file": null,
+      "onnx_sha256": null,
+      "onnx_size_bytes": null,
+      "tokenizer_repository": null,
+      "tokenizer_revision": null,
+      "sample_rate_hz": null,
+      "max_audio_seconds": null,
+      "output_semantics": null,
+      "official_threshold": null,
+      "official_inference_source": null
+    },
+    "livekit_eou_multilingual": {
+      "repository": null,
+      "revision": null,
+      "onnx_file": null,
+      "onnx_sha256": null,
+      "onnx_size_bytes": null,
+      "tokenizer_repository": null,
+      "tokenizer_revision": null,
+      "context_format": null,
+      "output_semantics": null,
+      "official_threshold": null,
+      "official_inference_source": null
+    }
+  }
+}

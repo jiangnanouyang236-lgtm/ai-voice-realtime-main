@@ -1,0 +1,66 @@
+{
+  "schema_version": "singing-score-asset/v1",
+  "song_id": "017",
+  "slug": "jiangnan",
+  "title": "江南",
+  "artist": "林俊杰",
+  "status": "IMPLEMENTED",
+  "method": {
+    "engine": "SoulX-Singer",
+    "task": "SVS",
+    "control": "continuous_f0",
+    "voice_id": "serena-v1",
+    "source_performance_artist": "单伟平",
+    "fixed_reference": true,
+    "candidate_seeds": [
+      88405783,
+      72943910,
+      56941294,
+      72571494,
+      48500562
+    ]
+  },
+  "segments": [
+    {
+      "id": "chunk-01",
+      "score": "chunks/chunk-01.soulx.json",
+      "lyrics": "风到这里就失眠粘住过客的思念遇到了这里长成险",
+      "duration_seconds": 10.99,
+      "pitch_shift": -6,
+      "selected_seed": 56941294,
+      "asr_similarity": 0.8182,
+      "pinyin_similarity": 0.9706,
+      "sha256": "56ccaca97a8df00505f69c7dd324d388e6bbe52e3d4834c052a1b01cc899e981"
+    },
+    {
+      "id": "chunk-02",
+      "score": "chunks/chunk-02.soulx.json",
+      "lyrics": "缠着我们留恋人世间你在身边就是缘",
+      "duration_seconds": 7.93,
+      "pitch_shift": -6,
+      "selected_seed": 48500562,
+      "asr_similarity": 1.0,
+      "pinyin_similarity": 1.0,
+      "sha256": "93c766347c20a5e45ae2afc774599c22ebd13a6b4d294e3c5918b74f9bbbd3f0"
+    },
+    {
+      "id": "chunk-03",
+      "score": "chunks/chunk-03.soulx.json",
+      "lyrics": "缘分写在三生石上面爱有万分之一甜",
+      "duration_seconds": 8.16,
+      "pitch_shift": -5,
+      "selected_seed": 72943910,
+      "asr_similarity": 0.875,
+      "pinyin_similarity": 1.0,
+      "sha256": "82b338f3c0a203804d9aa709af1f8c176d9250f14b30cebf7d2127f57a6dd003"
+    }
+  ],
+  "playback": {
+    "asset": "serena/017-jiangnan.wav",
+    "duration_seconds": 27.08,
+    "sample_rate": 16000,
+    "channels": 1,
+    "sample_format": "pcm_s16le",
+    "sha256": "f9b50ab5c312eeaba512881e3728cf687f03a316c66fe8cd711152bdac8cd4e7"
+  }
+}

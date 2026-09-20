@@ -1,0 +1,23 @@
+# syntax=docker/dockerfile:1.6
+
+ARG GO_IMAGE=golang:1.24-bookworm
+FROM --platform=$BUILDPLATFORM ${GO_IMAGE} AS builder
+
+ARG TARGETOS
+ARG TARGETARCH
+ENV CGO_ENABLED=0
+
+WORKDIR /src
+
+COPY go.mod go.sum ./
+RUN go mod download
+
+COPY . .
+RUN set -eux; \
+    GOOS="${TARGETOS:-linux}" GOARCH="${TARGETARCH:-amd64}" \
+    go build -trimpath -ldflags="-s -w" -o /out/go_voice_gateway .; \
+    ls -lh /out/go_voice_gateway; \
+    test -x /out/go_voice_gateway
+
+FROM scratch AS export
+COPY --from=builder /out/go_voice_gateway /go_voice_gateway

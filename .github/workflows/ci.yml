@@ -1,0 +1,70 @@
+name: CI
+
+on:
+  pull_request:
+  push:
+    branches:
+      - main
+      - develop/v3.0
+
+jobs:
+  python-compile:
+    name: Python compile
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.11"
+      - name: Compile Python modules
+        run: python -m compileall gateway llm mcp_servers server_config stt tts scripts -q
+      - name: Install Harness test dependency
+        run: python -m pip install "pytest>=8,<9"
+      - name: Repository agent preflight
+        run: python scripts/ai_preflight.py --profile offline
+      - name: Repository hygiene
+        run: python scripts/check_repo_hygiene.py --index
+      - name: Independent Gold provenance gate
+        run: python scripts/validate_eval_gold.py
+      - name: Harness regression tests
+        run: python -m pytest test/test_ai_preflight.py test/test_repo_hygiene.py test/test_evidence_report.py test/test_capture_evidence_environment.py test/test_local_mqtt_fixture_broker.py test/test_dev_harness.py -q
+
+  rust-client:
+    name: Rust client check
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: dtolnay/rust-toolchain@stable
+      - name: Cargo check
+        working-directory: rust_client
+        run: cargo check
+
+  go-gateway:
+    name: Go Gateway tests
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-go@v5
+        with:
+          go-version: "1.24.x"
+          cache-dependency-path: go_voice_gateway/go.sum
+      - name: Go test
+        working-directory: go_voice_gateway
+        run: go test ./...
+
+  admin-ui:
+    name: Admin UI build
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: "20.19"
+          cache: npm
+          cache-dependency-path: admin-ui/frontend/package-lock.json
+      - name: Install dependencies
+        working-directory: admin-ui/frontend
+        run: npm ci
+      - name: Build Admin UI
+        working-directory: admin-ui/frontend
+        run: npm run build

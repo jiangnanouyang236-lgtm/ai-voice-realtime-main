@@ -1,0 +1,14 @@
+!models/
+models/*
+!models/README.md
+!models/model-lock.template.json
+!models/model-lock.json
+data/smart_turn/synthetic/audio/**
+data/smart_turn/synthetic/manifest.jsonl
+data/smart_turn/human/audio/**
+results/**
+!results/.gitkeep
+dist/**
+!dist/.gitkeep
+.DS_Store
+__pycache__/

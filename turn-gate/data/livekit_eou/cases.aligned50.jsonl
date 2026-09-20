@@ -1,0 +1,50 @@
+{"id": "st-a-001", "pair_id": "st-a-001", "category": "clear_end", "context": [{"role": "assistant", "text": "你想查询什么信息？"}], "text": "帮我查一下今天青岛的天气。", "ground_truth": "END", "context_mode": "with_context"}
+{"id": "st-b-001", "pair_id": "st-b-001", "category": "incomplete", "context": [{"role": "assistant", "text": "如果明天下雨，你准备怎么办？"}], "text": "如果明天下雨的话", "ground_truth": "CONTINUE", "context_mode": "with_context"}
+{"id": "st-c-001-mid", "pair_id": "", "category": "thinking_pause", "context": [], "text": "我觉得这个事情", "ground_truth": "CONTINUE", "context_mode": "without_context"}
+{"id": "st-c-001-end", "pair_id": "", "category": "thinking_pause", "context": [], "text": "我觉得这个事情，还是应该先做语音。", "ground_truth": "END", "context_mode": "without_context"}
+{"id": "st-d-001-mid", "pair_id": "", "category": "hesitation", "context": [], "text": "我觉得，嗯", "ground_truth": "CONTINUE", "context_mode": "without_context"}
+{"id": "st-e-001-mid", "pair_id": "", "category": "long_sentence", "context": [], "text": "我现在的想法是先把 ASR 做完", "ground_truth": "CONTINUE", "context_mode": "without_context"}
+{"id": "st-f-001-mid", "pair_id": "", "category": "enumeration", "context": [], "text": "我需要买三个东西，第一是牛奶，第二是鸡蛋", "ground_truth": "CONTINUE", "context_mode": "without_context"}
+{"id": "st-g-001", "pair_id": "st-g-001", "category": "number_address", "context": [{"role": "assistant", "text": "请告诉我你的手机号。"}], "text": "我的手机号是 138", "ground_truth": "CONTINUE", "context_mode": "with_context"}
+{"id": "st-h-001-mid", "pair_id": "", "category": "self_correction", "context": [], "text": "帮我查北京，不是", "ground_truth": "CONTINUE", "context_mode": "without_context"}
+{"id": "st-i-001", "pair_id": "", "category": "restart", "context": [], "text": "我要", "ground_truth": "CONTINUE", "context_mode": "without_context"}
+{"id": "st-j-001", "pair_id": "st-j-001", "category": "short_answer", "context": [{"role": "assistant", "text": "这个方案可以继续吗？"}], "text": "可以。", "ground_truth": "END", "context_mode": "with_context"}
+{"id": "st-k-001", "pair_id": "", "category": "question", "context": [], "text": "这个可以部署在 CPU 上吗？", "ground_truth": "END", "context_mode": "without_context"}
+{"id": "st-l-001", "pair_id": "", "category": "trailing_tone", "context": [], "text": "那就这样吧……", "ground_truth": "END", "context_mode": "without_context"}
+{"id": "st-a-002", "pair_id": "st-a-002", "category": "clear_end", "context": [{"role": "assistant", "text": "你想控制哪个设备？"}], "text": "把客厅的灯打开。", "ground_truth": "END", "context_mode": "with_context"}
+{"id": "st-a-003", "pair_id": "st-a-003", "category": "clear_end", "context": [{"role": "assistant", "text": "你希望我什么时候提醒你？"}], "text": "明天早上八点提醒我开会。", "ground_truth": "END", "context_mode": "with_context"}
+{"id": "st-a-004", "pair_id": "", "category": "clear_end", "context": [], "text": "这个方案就按照现在这样执行。", "ground_truth": "END", "context_mode": "without_context"}
+{"id": "st-b-002", "pair_id": "", "category": "incomplete", "context": [], "text": "我觉得这个项目可能", "ground_truth": "CONTINUE", "context_mode": "without_context"}
+{"id": "st-b-003", "pair_id": "", "category": "incomplete", "context": [], "text": "我刚才想说的是", "ground_truth": "CONTINUE", "context_mode": "without_context"}
+{"id": "st-b-004", "pair_id": "", "category": "incomplete", "context": [], "text": "这个东西其实应该", "ground_truth": "CONTINUE", "context_mode": "without_context"}
+{"id": "st-b-005", "pair_id": "", "category": "incomplete", "context": [], "text": "我准备先把", "ground_truth": "CONTINUE", "context_mode": "without_context"}
+{"id": "st-c-002-mid", "pair_id": "", "category": "thinking_pause", "context": [], "text": "这个问题，我想一下", "ground_truth": "CONTINUE", "context_mode": "without_context"}
+{"id": "st-c-002-end", "pair_id": "", "category": "thinking_pause", "context": [], "text": "这个问题，我想一下，可能还是数据库的问题。", "ground_truth": "END", "context_mode": "without_context"}
+{"id": "st-c-003-mid", "pair_id": "", "category": "thinking_pause", "context": [], "text": "我准备，嗯", "ground_truth": "CONTINUE", "context_mode": "without_context"}
+{"id": "st-c-003-end", "pair_id": "", "category": "thinking_pause", "context": [], "text": "我准备，嗯，先去杭州看看。", "ground_truth": "END", "context_mode": "without_context"}
+{"id": "st-d-001-end", "pair_id": "", "category": "hesitation", "context": [], "text": "我觉得，嗯，这个东西还是可以做的。", "ground_truth": "END", "context_mode": "without_context"}
+{"id": "st-d-002-mid", "pair_id": "", "category": "hesitation", "context": [], "text": "怎么说呢，那个", "ground_truth": "CONTINUE", "context_mode": "without_context"}
+{"id": "st-d-002-end", "pair_id": "", "category": "hesitation", "context": [], "text": "怎么说呢，那个，我们可以先做一个小版本。", "ground_truth": "END", "context_mode": "without_context"}
+{"id": "st-d-003-mid", "pair_id": "", "category": "hesitation", "context": [], "text": "等一下，我想想", "ground_truth": "CONTINUE", "context_mode": "without_context"}
+{"id": "st-e-001-end", "pair_id": "", "category": "long_sentence", "context": [], "text": "我现在的想法是先把 ASR 做完，然后再处理 Turn Detection，最后再优化 TTS。", "ground_truth": "END", "context_mode": "without_context"}
+{"id": "st-e-002-mid", "pair_id": "", "category": "long_sentence", "context": [], "text": "我们先确认数据库配置", "ground_truth": "CONTINUE", "context_mode": "without_context"}
+{"id": "st-e-003-mid", "pair_id": "", "category": "long_sentence", "context": [], "text": "如果网络恢复正常", "ground_truth": "CONTINUE", "context_mode": "without_context"}
+{"id": "st-f-001-end", "pair_id": "", "category": "enumeration", "context": [], "text": "我需要买三个东西，第一是牛奶，第二是鸡蛋，第三是香蕉。", "ground_truth": "END", "context_mode": "without_context"}
+{"id": "st-f-002-mid", "pair_id": "", "category": "enumeration", "context": [], "text": "今天要做两件事，第一是更新代码", "ground_truth": "CONTINUE", "context_mode": "without_context"}
+{"id": "st-f-002-end", "pair_id": "", "category": "enumeration", "context": [], "text": "今天要做两件事，第一是更新代码，第二是检查日志。", "ground_truth": "END", "context_mode": "without_context"}
+{"id": "st-g-001-end", "pair_id": "st-g-001-end", "category": "number_address", "context": [{"role": "assistant", "text": "请告诉我你的手机号。"}], "text": "我的手机号是 138 5678 9012。", "ground_truth": "END", "context_mode": "with_context"}
+{"id": "st-g-002-mid", "pair_id": "st-g-002-mid", "category": "number_address", "context": [{"role": "assistant", "text": "服务器地址是什么？"}], "text": "服务器地址是 192.168", "ground_truth": "CONTINUE", "context_mode": "with_context"}
+{"id": "st-g-002-end", "pair_id": "st-g-002-end", "category": "number_address", "context": [{"role": "assistant", "text": "服务器地址是什么？"}], "text": "服务器地址是 192.168.1.20。", "ground_truth": "END", "context_mode": "with_context"}
+{"id": "st-g-003-mid", "pair_id": "st-g-003-mid", "category": "number_address", "context": [{"role": "assistant", "text": "请告诉我订单号。"}], "text": "订单号是 202608", "ground_truth": "CONTINUE", "context_mode": "with_context"}
+{"id": "st-g-004-mid", "pair_id": "st-g-004-mid", "category": "number_address", "context": [{"role": "assistant", "text": "请告诉我你的地址。"}], "text": "地址是山东省青岛市", "ground_truth": "CONTINUE", "context_mode": "with_context"}
+{"id": "st-h-001-end", "pair_id": "", "category": "self_correction", "context": [], "text": "帮我查北京，不是，帮我查杭州明天的天气。", "ground_truth": "END", "context_mode": "without_context"}
+{"id": "st-h-002-mid", "pair_id": "", "category": "self_correction", "context": [], "text": "明天上午，不对", "ground_truth": "CONTINUE", "context_mode": "without_context"}
+{"id": "st-h-002-end", "pair_id": "", "category": "self_correction", "context": [], "text": "明天上午，不对，应该是明天下午三点。", "ground_truth": "END", "context_mode": "without_context"}
+{"id": "st-i-001-end", "pair_id": "", "category": "restart", "context": [], "text": "我要，我要查一下天气。", "ground_truth": "END", "context_mode": "without_context"}
+{"id": "st-i-002-mid", "pair_id": "", "category": "restart", "context": [], "text": "不是这个", "ground_truth": "CONTINUE", "context_mode": "without_context"}
+{"id": "st-i-003-mid", "pair_id": "", "category": "restart", "context": [], "text": "我想查，我想查", "ground_truth": "CONTINUE", "context_mode": "without_context"}
+{"id": "st-j-002", "pair_id": "st-j-002", "category": "short_answer", "context": [{"role": "assistant", "text": "还需要继续吗？"}], "text": "不用。", "ground_truth": "END", "context_mode": "with_context"}
+{"id": "st-j-003", "pair_id": "st-j-003", "category": "short_answer", "context": [{"role": "assistant", "text": "你准备什么时候处理？"}], "text": "明天。", "ground_truth": "END", "context_mode": "with_context"}
+{"id": "st-j-004", "pair_id": "st-j-004", "category": "short_answer", "context": [{"role": "assistant", "text": "闹钟要设置在几点？"}], "text": "八点。", "ground_truth": "END", "context_mode": "with_context"}
+{"id": "st-k-002", "pair_id": "", "category": "question", "context": [], "text": "为什么会这样？", "ground_truth": "END", "context_mode": "without_context"}
+{"id": "st-l-002", "pair_id": "", "category": "trailing_tone", "context": [], "text": "应该差不多了……", "ground_truth": "END", "context_mode": "without_context"}

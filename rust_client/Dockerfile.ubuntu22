@@ -1,0 +1,51 @@
+# syntax=docker/dockerfile:1.6
+
+# Build inside the target Ubuntu 22.04 userspace. With Docker buildx,
+# linux/arm64 builds run under emulation on non-ARM hosts, which is slower but
+# avoids macOS cross-linker/sysroot issues for ALSA, OpenSSL, and serialport.
+FROM --platform=$TARGETPLATFORM ubuntu:22.04 AS builder
+
+ARG RUST_VERSION=stable
+ARG CARGO_PROFILE=release
+ARG CARGO_FEATURES=native-webrtc
+ENV DEBIAN_FRONTEND=noninteractive
+ENV RUSTUP_HOME=/opt/rustup
+ENV CARGO_HOME=/opt/cargo
+ENV PATH=/opt/cargo/bin:$PATH
+
+RUN apt-get update \
+    && apt-get install -y --no-install-recommends \
+        build-essential \
+        ca-certificates \
+        cmake \
+        curl \
+        libasound2-dev \
+        libopus-dev \
+        libssl-dev \
+        libudev-dev \
+        pkg-config \
+    && rm -rf /var/lib/apt/lists/*
+
+RUN curl --proto '=https' --tlsv1.2 -sSf https://sh.rustup.rs \
+    | sh -s -- -y --profile minimal --default-toolchain "${RUST_VERSION}"
+
+WORKDIR /src
+
+COPY Cargo.toml Cargo.lock ./
+COPY src ./src
+
+RUN set -eux; \
+    if [ -n "${CARGO_FEATURES}" ]; then feature_args="--features=${CARGO_FEATURES}"; else feature_args=""; fi; \
+    case "${CARGO_PROFILE}" in \
+        debug) cargo build ${feature_args} ;; \
+        release) cargo build --release ${feature_args} ;; \
+        *) echo "unsupported CARGO_PROFILE=${CARGO_PROFILE}" >&2; exit 2 ;; \
+    esac; \
+    ls -la "target/${CARGO_PROFILE}"; \
+    install -Dm755 "target/${CARGO_PROFILE}/rust_client" /out/rust_client; \
+    if [ "${CARGO_PROFILE}" = "release" ]; then strip /out/rust_client || true; fi; \
+    ls -lh /out/rust_client; \
+    test -x /out/rust_client
+
+FROM scratch AS export
+COPY --from=builder /out/rust_client /rust_client

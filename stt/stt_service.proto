@@ -1,0 +1,40 @@
+syntax = "proto3";
+
+package stt;
+
+// STT (Speech-to-Text) 服务
+service STTService {
+    // 单次语音识别（适合短音频）
+    rpc RecognizeSpeech(AudioRequest) returns (TextResponse);
+
+    // 流式语音识别（适合长音频或实时场景）
+    rpc StreamRecognize(stream AudioChunk) returns (stream TextResponse);
+}
+
+// 音频请求（单次识别）
+message AudioRequest {
+    bytes audio_data = 1;           // 音频数据
+    string format = 2;              // 音频格式：wav, mp3, webm, pcm 等
+    int32 sample_rate = 3;          // 采样率（可选，默认 16000）
+    string language = 4;            // 语言（可选，默认 auto）
+}
+
+// 音频块（流式识别）
+message AudioChunk {
+    bytes data = 1;                 // 音频数据块
+    bool is_final = 2;              // 是否是最后一块
+}
+
+// 文本响应
+message TextResponse {
+    string text = 1;                // 识别的文本
+    float confidence = 2;           // 置信度 (0-1)
+    bool is_final = 3;              // 是否是最终结果
+    string language = 4;            // 检测到的语言
+    string emotion = 5;             // 情感标注（happy, sad, angry, neutral 等）
+    string event_type = 6;          // 事件类型（speech, music, applause 等）
+    string raw_text = 7;            // Provider 返回的原始文本
+    string tags_json = 8;           // Provider 标签列表（JSON，可能为空）
+    string metadata_json = 9;       // 模型返回的其他元数据（JSON）
+    string confidence_source = 10;  // confidence 来源：model / unavailable
+}

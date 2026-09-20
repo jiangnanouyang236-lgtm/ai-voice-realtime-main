@@ -1,0 +1,66 @@
+{
+  "schema_version": "singing-score-asset/v1",
+  "song_id": "013",
+  "slug": "tonghua",
+  "title": "童话",
+  "artist": "光良",
+  "status": "IMPLEMENTED",
+  "method": {
+    "engine": "SoulX-Singer",
+    "task": "SVS",
+    "control": "continuous_f0",
+    "voice_id": "serena-v1",
+    "source_performance_artist": "光良",
+    "fixed_reference": true,
+    "candidate_seeds": [
+      88405783,
+      72943910,
+      56941294,
+      72571494,
+      48500562
+    ]
+  },
+  "segments": [
+    {
+      "id": "chunk-01",
+      "score": "chunks/chunk-01.soulx.json",
+      "lyrics": "我开始慌了是不是我又做",
+      "duration_seconds": 7.45,
+      "pitch_shift": 4,
+      "selected_seed": 48500562,
+      "asr_similarity": 0.9091,
+      "pinyin_similarity": 1.0,
+      "sha256": "55e104ad8e6614b6a843bbe93f472b1057807b07fb2148bbb615e4b70560320e"
+    },
+    {
+      "id": "chunk-02",
+      "score": "chunks/chunk-02.soulx.json",
+      "lyrics": "错了什么你哭着对我说童话里都是骗人的我不",
+      "duration_seconds": 11.88,
+      "pitch_shift": 2,
+      "selected_seed": 48500562,
+      "asr_similarity": 1.0,
+      "pinyin_similarity": 1.0,
+      "sha256": "7ec505747dfd003bf39b594318416967f636f4af3552dca7d043a15c8c45026d"
+    },
+    {
+      "id": "chunk-03",
+      "score": "chunks/chunk-03.soulx.json",
+      "lyrics": "可能是你的王子也许你不会懂从",
+      "duration_seconds": 10.62,
+      "pitch_shift": 1,
+      "selected_seed": 56941294,
+      "asr_similarity": 0.963,
+      "pinyin_similarity": 0.9589,
+      "sha256": "040637fd5bf494ba1bcf5315148818c480799cc0310fd4d57a26552056f93d31"
+    }
+  ],
+  "playback": {
+    "asset": "serena/013-tonghua.wav",
+    "duration_seconds": 29.95,
+    "sample_rate": 16000,
+    "channels": 1,
+    "sample_format": "pcm_s16le",
+    "sha256": "83a32cc0fb78ecab56a705c7de72816da1bc639d850c43f5b4be2fb1d1c22414"
+  }
+}

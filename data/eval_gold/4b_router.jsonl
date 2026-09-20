@@ -1,0 +1,94 @@
+{"id":"router-001","text":"讲一个发生在海边的温暖故事。","expected":"1","scenario":"chat_content","rationale":"纯内容生成，不需要实时或外部能力"}
+{"id":"router-002","text":"今天工作很不顺，陪我说会儿话。","expected":"1","scenario":"chat_emotion","rationale":"情绪陪伴属于普通对话"}
+{"id":"router-003","text":"你具备跳舞这个能力吗？","expected":"1","scenario":"chat_capability","rationale":"询问能力不是执行跳舞命令"}
+{"id":"router-004","text":"金价通常受哪些因素影响？","expected":"1","scenario":"chat_explanation","rationale":"解释一般原理不需要查询实时金价"}
+{"id":"router-005","text":"请创作一幅戴围巾的小狗插画。","expected":"1","scenario":"chat_creation","rationale":"图像创作请求不是读取当前摄像头画面"}
+{"id":"router-006","text":"早上好呀，今天感觉怎么样？","expected":"1","scenario":"chat_greeting","rationale":"用户在和助手寒暄，不是要求机器人挥手"}
+{"id":"router-007","text":"帮我瞧瞧。","expected":"1","scenario":"chat_vague_look","rationale":"没有说明查看对象，不能擅自启用视觉"}
+{"id":"router-008","text":"帮忙搜一搜。","expected":"1","scenario":"chat_vague_search","rationale":"没有搜索目标，不能擅自联网"}
+{"id":"router-009","text":"375 除以 15 等于多少？","expected":"1","scenario":"chat_arithmetic","rationale":"普通算术不属于当前 Utils 工具能力"}
+{"id":"router-010","text":"把卧室空调温度调低两度。","expected":"1","scenario":"chat_unsupported_home","rationale":"当前没有空调控制工具，不得误路由为 Robot"}
+{"id":"router-011","text":"请把书房窗帘拉上。","expected":"1","scenario":"chat_unsupported_home","rationale":"当前没有窗帘控制工具，不得替换成其它动作"}
+{"id":"router-012","text":"你可以发起视频通话吗？","expected":"1","scenario":"chat_capability","rationale":"能力问句不是立即呼叫视频"}
+{"id":"router-013","text":"先别发起视频通话。","expected":"1","scenario":"chat_negated_action","rationale":"否定动作不能触发视频工具"}
+{"id":"router-014","text":"请根据环境主动回应：一名用户坐在桌边看书。","expected":"1","scenario":"chat_environment_context","rationale":"客户端注入的环境描述不是用户的视觉提问"}
+{"id":"router-015","text":"这个故事先不讲了，我们换一个话题。","expected":"1","scenario":"chat_subflow_exit","rationale":"退出子话题不等于结束整个会话"}
+{"id":"router-016","text":"今天就聊到这里，再会。","expected":"exit","scenario":"exit_explicit","rationale":"明确结束整个会话"}
+{"id":"router-017","text":"我准备休息了，你也先退下。","expected":"exit","scenario":"exit_explicit","rationale":"明确要求助手退出"}
+{"id":"router-018","text":"先挂了，改天接着聊。","expected":"exit","scenario":"exit_explicit","rationale":"明确告别并结束会话"}
+{"id":"router-019","text":"到此为止，请结束本次对话。","expected":"exit","scenario":"exit_explicit","rationale":"明确结束本次对话"}
+{"id":"router-020","text":"不用继续陪我了，拜拜。","expected":"exit","scenario":"exit_explicit","rationale":"明确告别"}
+{"id":"router-021","text":"看看摄像头里现在有哪些东西。","expected":"2:vision","scenario":"vision_scene","rationale":"需要读取当前画面"}
+{"id":"router-022","text":"我今天穿的这身颜色协调吗？","expected":"2:vision","scenario":"vision_outfit","rationale":"需要观察用户当前穿着"}
+{"id":"router-023","text":"镜头中的桌面上放了几本书？","expected":"2:vision","scenario":"vision_count","rationale":"需要基于当前画面计数"}
+{"id":"router-024","text":"帮我看一下身后的门有没有关。","expected":"2:vision","scenario":"vision_state","rationale":"需要查看当前画面中的门"}
+{"id":"router-025","text":"当前画面里有几个人？","expected":"2:vision","scenario":"vision_people","rationale":"需要读取当前摄像头画面"}
+{"id":"router-026","text":"Look at the camera and tell me what is on the desk.","expected":"2:vision","scenario":"vision_english","rationale":"英文请求明确要求读取摄像头画面"}
+{"id":"router-027","text":"从镜头判断房间的灯现在亮着吗？","expected":"2:vision","scenario":"vision_observation_not_control","rationale":"询问画面状态，不是控制灯光"}
+{"id":"router-028","text":"你能从当前画面描述一下我的表情吗？","expected":"2:vision","scenario":"vision_expression","rationale":"需要观察当前表情"}
+{"id":"router-029","text":"查查杭州明天会不会下雨。","expected":"2:websearch","scenario":"web_weather","rationale":"实时天气需要联网查询"}
+{"id":"router-030","text":"搜索今天刚发布的机器人行业新闻。","expected":"2:websearch","scenario":"web_news","rationale":"最新新闻需要联网"}
+{"id":"router-031","text":"现在一克黄金大约多少钱？","expected":"2:websearch","scenario":"web_price","rationale":"当前金价属于实时信息"}
+{"id":"router-032","text":"查询欧元兑换人民币的最新汇率。","expected":"2:websearch","scenario":"web_exchange","rationale":"最新汇率需要联网"}
+{"id":"router-033","text":"今天沪深 300 收盘表现怎么样？","expected":"2:websearch","scenario":"web_market","rationale":"市场行情需要联网查询"}
+{"id":"router-034","text":"昨晚那场英超比赛比分是多少？","expected":"2:websearch","scenario":"web_sports","rationale":"赛事结果需要联网查询"}
+{"id":"router-035","text":"帮我查下周五青岛到北京的高铁班次。","expected":"2:websearch","scenario":"web_schedule","rationale":"交通班次是外部动态信息"}
+{"id":"router-036","text":"最近青岛有哪些正在举办的展览？","expected":"2:websearch","scenario":"web_local_events","rationale":"近期活动信息需要联网"}
+{"id":"router-037","text":"向前移动一下。","expected":"2:robot","scenario":"robot_move_forward","rationale":"明确前进动作"}
+{"id":"router-038","text":"往后退一下。","expected":"2:robot","scenario":"robot_move_backward","rationale":"明确后退动作"}
+{"id":"router-039","text":"原地向左转。","expected":"2:robot","scenario":"robot_turn","rationale":"明确左转动作"}
+{"id":"router-040","text":"马上停住，不要继续移动。","expected":"2:robot","scenario":"robot_stop","rationale":"明确停止机器人动作"}
+{"id":"router-041","text":"去巡视一下办公室。","expected":"2:robot","scenario":"robot_patrol","rationale":"明确巡逻任务"}
+{"id":"router-042","text":"开启跟随模式，跟我走。","expected":"2:robot","scenario":"robot_follow","rationale":"明确启动追随"}
+{"id":"router-043","text":"返回充电座。","expected":"2:robot","scenario":"robot_recharge","rationale":"明确回桩动作"}
+{"id":"router-044","text":"开始生成环境地图。","expected":"2:robot","scenario":"robot_map","rationale":"明确建图任务"}
+{"id":"router-045","text":"现在表演一下跳舞动作。","expected":"2:robot","scenario":"robot_dance","rationale":"明确执行固定跳舞动作"}
+{"id":"router-046","text":"播放一段音乐。","expected":"2:robot","scenario":"robot_music","rationale":"明确执行固定音乐动作"}
+{"id":"router-047","text":"现在发起一次视频呼叫。","expected":"2:robot","scenario":"robot_video","rationale":"明确执行视频通话动作"}
+{"id":"router-048","text":"识别一下我做的手势。","expected":"2:robot","scenario":"robot_gesture","rationale":"明确调用手势检测工具"}
+{"id":"router-049","text":"检查画面中有没有宠物。","expected":"2:robot","scenario":"robot_pet","rationale":"明确调用宠物检测工具而非普通 Vision 描述"}
+{"id":"router-050","text":"扫描并理解一下周围的环境。","expected":"2:robot","scenario":"robot_environment","rationale":"明确调用环境理解工具"}
+{"id":"router-051","text":"朝我挥手问好。","expected":"2:robot","scenario":"robot_greet","rationale":"明确要求机器人执行打招呼动作"}
+{"id":"router-052","text":"伸手和我握一下。","expected":"2:robot","scenario":"robot_handshake","rationale":"明确要求握手"}
+{"id":"router-053","text":"为我们欢呼庆祝一下。","expected":"2:robot","scenario":"robot_cheer","rationale":"明确要求欢呼动作"}
+{"id":"router-054","text":"取消机器人正在执行的任务。","expected":"2:robot","scenario":"robot_cancel","rationale":"明确取消当前机器人任务"}
+{"id":"router-055","text":"后天上午十点提醒我提交周报。","expected":"2:task","scenario":"task_create","rationale":"明确创建提醒"}
+{"id":"router-056","text":"二十分钟后叫我关火。","expected":"2:task","scenario":"task_relative","rationale":"相对时间提醒属于任务工具"}
+{"id":"router-057","text":"把我的全部提醒列出来。","expected":"2:task","scenario":"task_list","rationale":"明确查询提醒列表"}
+{"id":"router-058","text":"删除刚刚创建的那条提醒。","expected":"2:task","scenario":"task_delete","rationale":"明确删除提醒"}
+{"id":"router-059","text":"取消明天下午的开会提醒。","expected":"2:task","scenario":"task_cancel","rationale":"明确取消已有提醒"}
+{"id":"router-060","text":"给我新增一个每天喝水的待办。","expected":"2:task","scenario":"task_recurring","rationale":"明确新增待办任务"}
+{"id":"router-061","text":"告诉我此刻的北京时间。","expected":"2:utils","scenario":"utils_time","rationale":"当前时间由 Utils 提供"}
+{"id":"router-062","text":"今天的公历日期是什么？","expected":"2:utils","scenario":"utils_date","rationale":"当前日期由 Utils 提供"}
+{"id":"router-063","text":"后天是星期几？","expected":"2:utils","scenario":"utils_weekday","rationale":"星期信息属于日历能力"}
+{"id":"router-064","text":"今天对应农历哪一天？","expected":"2:utils","scenario":"utils_lunar","rationale":"农历信息属于 Utils"}
+{"id":"router-065","text":"今天属于法定节假日吗？","expected":"2:utils","scenario":"utils_holiday","rationale":"节假日判断属于 Utils"}
+{"id":"router-066","text":"把当前时间转换成 Unix 时间戳。","expected":"2:utils","scenario":"utils_timestamp","rationale":"当前时间戳换算属于 Utils"}
+{"id":"router-067","text":"查一下现在几点，晚于十点的话就提醒我睡觉。","expected":"2:complex","scenario":"complex_utils_task","rationale":"时间查询结果决定是否创建提醒"}
+{"id":"router-068","text":"看看明天的天气，如果下雨就让机器人回充。","expected":"2:complex","scenario":"complex_web_robot","rationale":"天气查询结果决定机器人动作"}
+{"id":"router-069","text":"先识别房间里有没有宠物，有宠物再播放音乐。","expected":"2:complex","scenario":"complex_robot_condition","rationale":"检测结果决定后续机器人动作"}
+{"id":"router-070","text":"先向左转，接着向右转。","expected":"2:complex","scenario":"complex_same_tool_sequence","rationale":"同一句包含两个独立 Robot 动作"}
+{"id":"router-071","text":"先前进一步，然后后退一步。","expected":"2:complex","scenario":"complex_same_tool_sequence","rationale":"同一 move_robot 工具也需要执行两次"}
+{"id":"router-072","text":"查一下今天的新闻，再告诉我现在几点。","expected":"2:complex","scenario":"complex_parallel_tools","rationale":"同一句需要 WebSearch 和 Utils 两类工具"}
+{"id":"router-073","text":"先开始建图，完成后再启动巡逻。","expected":"2:complex","scenario":"complex_robot_sequence","rationale":"包含两个有顺序关系的机器人任务"}
+{"id":"router-074","text":"看看我穿得是否合适，如果不合适就提醒我换衣服。","expected":"2:complex","scenario":"complex_vision_task","rationale":"视觉判断结果决定是否创建提醒"}
+{"id":"router-075","text":"那南京呢？","expected":"2:websearch","scenario":"multiturn_web_followup","history":[{"role":"user","content":"帮我查一下苏州今天的天气。"},{"role":"assistant","content":"苏州今天多云。"}],"rationale":"历史上下文明确当前追问的是另一城市天气"}
+{"id":"router-076","text":"把刚才那一条删掉。","expected":"2:task","scenario":"multiturn_task_reference","history":[{"role":"user","content":"今晚九点提醒我吃药。"},{"role":"assistant","content":"已经创建今晚九点的吃药提醒。"}],"rationale":"历史上下文把指代限定为提醒"}
+{"id":"router-077","text":"好，就按这个执行。","expected":"2:robot","scenario":"multiturn_robot_confirmation","history":[{"role":"user","content":"现在开始巡逻可以吗？"},{"role":"assistant","content":"请确认是否立即启动巡逻。"}],"rationale":"用户确认上一轮明确的机器人动作"}
+{"id":"router-078","text":"明白了，多谢。","expected":"1","scenario":"multiturn_ack","history":[{"role":"user","content":"当前日期是什么？"},{"role":"assistant","content":"今天是 2026 年 8 月 9 日。"}],"rationale":"对已完成回答的致谢不应再次调用工具"}
+{"id":"router-079","text":"好的，那先这样，回头聊。","expected":"exit","scenario":"multiturn_exit","history":[{"role":"user","content":"给我讲个短故事。"},{"role":"assistant","content":"故事讲完了。"}],"rationale":"历史不改变当前明确告别意图"}
+{"id":"router-080","text":"继续讲后面的情节。","expected":"1","scenario":"multiturn_chat_continue","history":[{"role":"user","content":"讲一个太空旅行故事。"},{"role":"assistant","content":"飞船刚刚离开地球。"}],"rationale":"续写故事仍是普通内容生成"}
+{"id":"router-081","text":"那我这件上衣的颜色呢？","expected":"2:vision","scenario":"multiturn_vision_reference","history":[{"role":"user","content":"帮我看看今天的穿搭。"},{"role":"assistant","content":"我可以根据当前画面帮你判断。"}],"rationale":"历史上下文明确指向当前画面中的穿着"}
+{"id":"router-082","text":"可以，现在开始吧。","expected":"2:robot","scenario":"multiturn_robot_confirmation","history":[{"role":"user","content":"需要我让机器人返回充电座吗？"},{"role":"assistant","content":"请确认是否立即回充。"}],"rationale":"用户确认上一轮明确的回充动作"}
+{"id":"router-083","text":"Can you perform a dance?","expected":"1","scenario":"multilingual_chat_capability","rationale":"英文能力问句不是动作命令"}
+{"id":"router-084","text":"Goodbye, please end this conversation.","expected":"exit","scenario":"multilingual_exit","rationale":"英文明确结束整个会话"}
+{"id":"router-085","text":"What is the latest weather in Shanghai?","expected":"2:websearch","scenario":"multilingual_web","rationale":"英文实时天气请求需要联网"}
+{"id":"router-086","text":"Move forward now.","expected":"2:robot","scenario":"multilingual_robot","rationale":"英文明确机器人前进动作"}
+{"id":"router-087","text":"Remind me to take medicine at 9 PM.","expected":"2:task","scenario":"multilingual_task","rationale":"英文明确创建提醒"}
+{"id":"router-088","text":"What time is it right now?","expected":"2:utils","scenario":"multilingual_utils","rationale":"英文当前时间请求属于 Utils"}
+{"id":"router-089","text":"Check tomorrow's weather and remind me to carry an umbrella if it rains.","expected":"2:complex","scenario":"multilingual_complex","rationale":"英文条件查询加提醒属于复杂流程"}
+{"id":"router-090","text":"先 check 当前时间，然后 remind me 去睡觉。","expected":"2:complex","scenario":"mixed_language_complex","rationale":"中英文混合请求包含时间查询与提醒两个工具步骤"}
+{"id":"router-091","text":"把正在播放的音乐关掉。","expected":"2:robot","scenario":"robot_cancel_music","rationale":"明确停止当前机器人音乐任务"}
+{"id":"router-092","text":"取消一切。","expected":"1","scenario":"chat_ambiguous_cancel","rationale":"没有说明取消对象，不能退出会话或擅自取消机器人任务"}
+{"id":"router-093","text":"What are the current time and weather?","expected":"2:complex","scenario":"multilingual_complex","rationale":"英文请求同时需要 Utils 和 WebSearch"}
+{"id":"router-094","text":"查一下 weather，再告诉我现在 time。","expected":"2:complex","scenario":"mixed_language_complex","rationale":"中英混合请求同时需要 WebSearch 和 Utils"}

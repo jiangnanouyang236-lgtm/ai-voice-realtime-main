@@ -1,0 +1,16 @@
+{"id":"eou-a-001","category":"clear_end","context":[],"text":"这个方案就按照现在这样执行。","ground_truth":"END","context_mode":"without_context"}
+{"id":"eou-b-001","category":"incomplete","context":[],"text":"我刚才想说的是","ground_truth":"CONTINUE","context_mode":"without_context"}
+{"id":"eou-c-001","category":"thinking_pause","context":[],"text":"这个问题，我想一下","ground_truth":"CONTINUE","context_mode":"without_context"}
+{"id":"eou-d-001","category":"hesitation","context":[],"text":"我觉得，嗯，那个","ground_truth":"CONTINUE","context_mode":"without_context"}
+{"id":"eou-e-001","category":"long_sentence","context":[],"text":"我现在的想法是先把 ASR 做完，然后再处理 Turn Detection","ground_truth":"CONTINUE","context_mode":"without_context"}
+{"id":"eou-f-001","category":"enumeration","context":[],"text":"我需要买三个东西，第一是牛奶，第二是鸡蛋","ground_truth":"CONTINUE","context_mode":"without_context"}
+{"id":"eou-g-001","category":"number_address","context":[],"text":"服务器地址是 192.168","ground_truth":"CONTINUE","context_mode":"without_context"}
+{"id":"eou-h-001","category":"self_correction","context":[],"text":"帮我查北京，不是","ground_truth":"CONTINUE","context_mode":"without_context"}
+{"id":"eou-i-001","category":"restart","context":[],"text":"我要，我要","ground_truth":"CONTINUE","context_mode":"without_context"}
+{"id":"eou-j-001-no-context","pair_id":"eou-j-001","category":"short_answer","context":[],"text":"杭州","ground_truth":"END","context_mode":"without_context"}
+{"id":"eou-j-001-context","pair_id":"eou-j-001","category":"short_answer","context":[{"role":"assistant","text":"你想查询哪个城市？"}],"text":"杭州","ground_truth":"END","context_mode":"with_context"}
+{"id":"eou-j-002-no-context","pair_id":"eou-j-002","category":"short_answer","context":[],"text":"明天早上八点","ground_truth":"END","context_mode":"without_context"}
+{"id":"eou-j-002-context","pair_id":"eou-j-002","category":"short_answer","context":[{"role":"assistant","text":"你的闹钟要设置几点？"}],"text":"明天早上八点","ground_truth":"END","context_mode":"with_context"}
+{"id":"eou-k-001","category":"question","context":[],"text":"为什么会这样？","ground_truth":"END","context_mode":"without_context"}
+{"id":"eou-l-001","category":"trailing_tone","context":[],"text":"嗯，就这个。","ground_truth":"END","context_mode":"without_context"}
+{"id":"eou-context-continue","category":"context_incomplete","context":[{"role":"assistant","text":"你准备什么时候去？"}],"text":"我准备","ground_truth":"CONTINUE","context_mode":"with_context"}

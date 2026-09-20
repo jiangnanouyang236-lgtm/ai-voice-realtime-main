@@ -1,0 +1,66 @@
+{
+  "schema_version": "singing-score-asset/v1",
+  "song_id": "016",
+  "slug": "jiandanai",
+  "title": "简单爱",
+  "artist": "周杰伦",
+  "status": "IMPLEMENTED",
+  "method": {
+    "engine": "SoulX-Singer",
+    "task": "SVS",
+    "control": "continuous_f0",
+    "voice_id": "serena-v1",
+    "source_performance_artist": "刘瑞琦",
+    "fixed_reference": true,
+    "candidate_seeds": [
+      88405783,
+      72943910,
+      56941294,
+      72571494,
+      48500562
+    ]
+  },
+  "segments": [
+    {
+      "id": "chunk-01",
+      "score": "chunks/chunk-01.soulx.json",
+      "lyrics": "跳动牵着你的手一直莫名感动我想带你回我的外婆在一起",
+      "duration_seconds": 10.16,
+      "pitch_shift": -2,
+      "selected_seed": 48500562,
+      "asr_similarity": 1.0,
+      "pinyin_similarity": 1.0,
+      "sha256": "a5af63db1b30369fc96a049e7ac270034c2b3c2363cf6502cb3e25a2077a4781"
+    },
+    {
+      "id": "chunk-02",
+      "score": "chunks/chunk-02.soulx.json",
+      "lyrics": "看着日落一直到我们都睡着我想就这样牵着你的手不放开",
+      "duration_seconds": 10.5,
+      "pitch_shift": -7,
+      "selected_seed": 72943910,
+      "asr_similarity": 1.0,
+      "pinyin_similarity": 1.0,
+      "sha256": "122f3a5b51ef9096e0acc6b60481b1373964f453178fb1f88dd67be41a558ec5"
+    },
+    {
+      "id": "chunk-03",
+      "score": "chunks/chunk-03.soulx.json",
+      "lyrics": "爱能不能够永远单纯没有被爱我想带你骑单车想和你看",
+      "duration_seconds": 9.32,
+      "pitch_shift": -5,
+      "selected_seed": 72571494,
+      "asr_similarity": 0.9583,
+      "pinyin_similarity": 1.0,
+      "sha256": "6a3b5a4a953cc68c22044df8ca6520d59d455f9dc0e25ba40dd2b0c71b3ab4bf"
+    }
+  ],
+  "playback": {
+    "asset": "serena/016-jiandanai.wav",
+    "duration_seconds": 29.98,
+    "sample_rate": 16000,
+    "channels": 1,
+    "sample_format": "pcm_s16le",
+    "sha256": "f3b86a13431ee999679d9e98f027e354af9eaaffc4d7531df9456fa4c905df3c"
+  }
+}

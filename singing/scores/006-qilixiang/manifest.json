@@ -1,0 +1,63 @@
+{
+  "schema_version": "singing-score-asset/v1",
+  "song_id": "006",
+  "slug": "qilixiang",
+  "title": "七里香",
+  "artist": "周杰伦",
+  "status": "OWNER_LISTENING_ACCEPTED",
+  "method": {
+    "engine": "SoulX-Singer",
+    "task": "SVS",
+    "control": "continuous_f0",
+    "voice_id": "serena-v1",
+    "source_performance_artist": "刘瑞琦",
+    "fixed_reference": true,
+    "candidate_seeds": [88405783, 72943910, 56941294, 72571494, 48500562]
+  },
+  "segments": [
+    {
+      "id": "chunk-01",
+      "score": "chunks/chunk-01.soulx.json",
+      "lyrics": "你说你舍不得吃掉这一种感觉",
+      "duration_seconds": 7.13,
+      "pitch_shift": -7,
+      "selected_seed": 72571494,
+      "sha256": "fb90e6d52fa298865ec0a4b2dc8437e164367c72bfef428bb35eb46420f69f6d"
+    },
+    {
+      "id": "chunk-02",
+      "score": "chunks/chunk-02.soulx.json",
+      "lyrics": "雨下整夜我的爱溢出就像雨水院子落叶",
+      "duration_seconds": 9.02,
+      "pitch_shift": -5,
+      "selected_seed": 48500562,
+      "sha256": "93f82878840e642567ba8e79ab847021735c6e95ffce195cb06fc1df9736d858"
+    },
+    {
+      "id": "chunk-03",
+      "score": "chunks/chunk-03.soulx.json",
+      "lyrics": "跟我的思念厚厚一叠几句是非也无法将我的热情",
+      "duration_seconds": 10.37,
+      "pitch_shift": -6,
+      "selected_seed": 48500562,
+      "sha256": "33a1ecd076c83963dbf965da9a001edbde47de84da9def0917addf893d2bc1a8"
+    },
+    {
+      "id": "chunk-04",
+      "score": "chunks/chunk-04.soulx.json",
+      "lyrics": "冷却你出现在我诗的每一页",
+      "duration_seconds": 6.8,
+      "pitch_shift": -6,
+      "selected_seed": 48500562,
+      "sha256": "33402f7b39922417bfe5b5b97329d449db41f012947bc74f7a1572bc0b47771d"
+    }
+  ],
+  "playback": {
+    "asset": "serena/006-qilixiang.wav",
+    "duration_seconds": 33.32,
+    "sample_rate": 16000,
+    "channels": 1,
+    "sample_format": "pcm_s16le",
+    "sha256": "7746a400e0bab1e07066404a6e8eb8e851acb9f6e6ce14d8395aa97f43bb348e"
+  }
+}

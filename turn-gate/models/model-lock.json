@@ -1,0 +1,57 @@
+{
+  "schema_version": 1,
+  "captured_at": "2026-08-11T09:35:00+08:00",
+  "runtime": {
+    "platform": "macOS-26.5.2-arm64-arm-64bit",
+    "python": "3.11.6",
+    "numpy": "1.26.4",
+    "onnxruntime": "1.21.0",
+    "transformers": "4.50.3",
+    "execution_provider": "CPUExecutionProvider"
+  },
+  "models": {
+    "smart_turn_v3": {
+      "local_dir": "smart-turn-v3.2",
+      "repository": "pipecat-ai/smart-turn-v3",
+      "revision": "f766f81d3cfdf7737ac64aad813d91bbfd56bf93",
+      "onnx_file": "smart-turn-v3.2-cpu.onnx",
+      "onnx_sha256": "2bb026316b14a660486a75b1733cd3fbab8c2fd0314dc9af7be49f8cca967e4f",
+      "onnx_size_bytes": 8679182,
+      "parameter_scale": "approximately 8M",
+      "tokenizer_repository": null,
+      "tokenizer_revision": null,
+      "sample_rate_hz": 16000,
+      "channels": 1,
+      "max_audio_seconds": 8,
+      "input": "Whisper-style 80-bin log-mel features, shape [batch, 80, 800]",
+      "output_semantics": "ONNX output is sigmoid probability of Complete; do not apply sigmoid again",
+      "official_threshold": 0.5,
+      "official_inference_repository": "pipecat-ai/smart-turn",
+      "official_inference_revision": "4786657e242dfe77dd138699ac564ee074a2a543",
+      "official_inference_source": "inference.py and Pipecat LocalSmartTurnAnalyzerV3"
+    },
+    "livekit_eou_multilingual": {
+      "local_dir": "livekit-eou-v0.4.1-intl",
+      "repository": "livekit/turn-detector",
+      "revision": "87e35fcb1e60a569bea70346191c4886ea92e281",
+      "revision_name": "v0.4.1-intl",
+      "onnx_file": "onnx/model_q8.onnx",
+      "onnx_sha256": "bd2c30776882138a1d95a07faddc13756fe1a35bef6323505f1124fca349bc9c",
+      "onnx_size_bytes": 396316457,
+      "base_model": "Qwen2.5-0.5B-Instruct",
+      "tokenizer_repository": "livekit/turn-detector",
+      "tokenizer_revision": "87e35fcb1e60a569bea70346191c4886ea92e281",
+      "tokenizer_json_sha256": "9c5ae00e602b8860cbd784ba82a8aa14e8feecec692e7076590d014d7b7fdafa",
+      "max_history_turns": 6,
+      "max_history_tokens": 128,
+      "context_format": "normalized user/assistant messages via tokenizer chat template; remove final <|im_end|>",
+      "output_semantics": "ONNX output prob is per-token EOU probability; use flattened last value directly",
+      "official_thresholds": {
+        "zh": 0.0066
+      },
+      "official_inference_repository": "livekit/agents",
+      "official_inference_revision": "629cf2aef3d3c52fd1a5be8bb6319d4d3c05dafb",
+      "official_inference_source": "livekit-plugins-turn-detector base.py and multilingual.py"
+    }
+  }
+}

@@ -1,0 +1,69 @@
+{
+  "schema_version": "singing-score-asset/v1",
+  "song_id": "019",
+  "slug": "yongqi",
+  "title": "勇气",
+  "artist": "梁静茹",
+  "status": "IMPLEMENTED",
+  "method": {
+    "engine": "SoulX-Singer",
+    "task": "SVS",
+    "control": "continuous_f0",
+    "voice_id": "serena-v1",
+    "source_performance_artist": "赵乃吉",
+    "fixed_reference": true,
+    "candidate_seeds": [
+      88405783,
+      72943910,
+      56941294,
+      72571494,
+      48500562
+    ]
+  },
+  "segments": [
+    {
+      "id": "chunk-01",
+      "score": "chunks/chunk-01.soulx.json",
+      "lyrics": "肯定我愿意天涯海角都随你去我知道一切不容易我的心",
+      "duration_seconds": 10.43,
+      "pitch_shift": -1,
+      "selected_seed": 48500562,
+      "asr_similarity": 1.0,
+      "pinyin_similarity": 1.0,
+      "sha256": "12a1db9eddad0778a9a2fe02e1eda741336cf6dc27d96cf538107762106eb238",
+      "octave_jumps": 12
+    },
+    {
+      "id": "chunk-02",
+      "score": "chunks/chunk-02.soulx.json",
+      "lyrics": "一直温习说服自己最怕你突然说要放弃",
+      "duration_seconds": 12.66,
+      "pitch_shift": -3,
+      "selected_seed": 72943910,
+      "asr_similarity": 1.0,
+      "pinyin_similarity": 1.0,
+      "sha256": "c5f18f6c398db3effc110fc45a7795a79221c72185db9792956d1414568c32ac",
+      "octave_jumps": 0
+    },
+    {
+      "id": "chunk-03",
+      "score": "chunks/chunk-03.soulx.json",
+      "lyrics": "爱真的需要勇气来面对流言蜚语",
+      "duration_seconds": 6.91,
+      "pitch_shift": -3,
+      "selected_seed": 72571494,
+      "asr_similarity": 1.0,
+      "pinyin_similarity": 1.0,
+      "sha256": "ffde9f6c227747ffd450b837133a4c9b87af60981619f86c48fea8e46c702279",
+      "octave_jumps": 7
+    }
+  ],
+  "playback": {
+    "asset": "serena/019-yongqi.wav",
+    "duration_seconds": 30.0,
+    "sample_rate": 16000,
+    "channels": 1,
+    "sample_format": "pcm_s16le",
+    "sha256": "e9d13a65184d5d712fe707d24fb22be908650befaf6e800f5c3268c7b5d8a52d"
+  }
+}

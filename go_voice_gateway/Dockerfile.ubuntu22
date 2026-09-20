@@ -1,0 +1,11 @@
+# syntax=docker/dockerfile:1.6
+
+# Runtime image only. Put this Dockerfile next to the packaged go_voice_gateway
+# binary, then run:
+#   docker build -f Dockerfile.ubuntu22 -t ai-voice-go-gateway:ubuntu22-amd64 .
+FROM scratch
+
+ARG GO_VOICE_GATEWAY_BINARY=go_voice_gateway
+
+COPY ${GO_VOICE_GATEWAY_BINARY} /go_voice_gateway
+CMD ["/go_voice_gateway"]

@@ -1,0 +1,37 @@
+name: Feature request
+description: Propose a new capability or workflow.
+title: "[Feature] "
+labels: ["enhancement"]
+body:
+  - type: textarea
+    id: problem
+    attributes:
+      label: Problem / Goal
+      description: What user or operations problem should this solve?
+    validations:
+      required: true
+  - type: textarea
+    id: proposal
+    attributes:
+      label: Proposed Behavior
+      description: Describe the ideal interaction or runtime behavior.
+    validations:
+      required: true
+  - type: dropdown
+    id: area
+    attributes:
+      label: Area
+      options:
+        - Client interaction
+        - Gateway orchestration
+        - LLM / Agent
+        - MCP tool
+        - Admin UI
+        - Deployment / Ops
+        - Documentation
+        - Other
+  - type: textarea
+    id: tradeoffs
+    attributes:
+      label: Tradeoffs / Risks
+      description: Latency, safety, config, backward compatibility, or rollout concerns.

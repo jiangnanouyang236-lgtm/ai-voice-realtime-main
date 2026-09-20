@@ -1,0 +1,34 @@
+# Development/test override. It mounts source code only; the root .env stays on the host.
+x-python-source-volumes: &python-source-volumes
+  - ./gateway:/app/gateway:ro
+  - ./llm:/app/llm:ro
+  - ./mcp_servers:/app/mcp_servers:ro
+  - ./server_config:/app/server_config:ro
+  - ./stt:/app/stt:ro
+  - ./tts:/app/tts:ro
+  - ./admin-ui/backend:/app/admin-ui/backend:ro
+  - ./config.py:/app/config.py:ro
+  - ./voice_logging.py:/app/voice_logging.py:ro
+  - ./voice_quick_replies.py:/app/voice_quick_replies.py:ro
+
+services:
+  wzk-stt-grpc:
+    volumes: *python-source-volumes
+
+  wzk-llm-grpc:
+    volumes: *python-source-volumes
+
+  wzk-tts-grpc:
+    volumes: *python-source-volumes
+
+  wzk-python-gateway:
+    volumes: *python-source-volumes
+
+  wzk-admin-api:
+    volumes: *python-source-volumes
+
+  wzk-mcp-utils:
+    volumes: *python-source-volumes
+
+  wzk-mcp-robot:
+    volumes: *python-source-volumes

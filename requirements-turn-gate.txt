@@ -1,0 +1,5 @@
+-r requirements.txt
+
+numpy>=1.26,<3
+onnxruntime>=1.21,<2
+transformers>=4.50,<5

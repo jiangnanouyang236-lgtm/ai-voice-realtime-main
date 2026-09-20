@@ -1,0 +1,77 @@
+{
+  "schema_version": "singing-score-asset/v1",
+  "song_id": "014",
+  "slug": "xiaomeiman",
+  "title": "小美满",
+  "artist": "周深",
+  "status": "IMPLEMENTED",
+  "method": {
+    "engine": "SoulX-Singer",
+    "task": "SVS",
+    "control": "continuous_f0",
+    "voice_id": "serena-v1",
+    "source_performance_artist": "周深",
+    "fixed_reference": true,
+    "candidate_seeds": [
+      88405783,
+      72943910,
+      56941294,
+      72571494,
+      48500562
+    ]
+  },
+  "segments": [
+    {
+      "id": "chunk-01",
+      "score": "chunks/chunk-01.soulx.json",
+      "lyrics": "都转弯哪个风景都漂亮",
+      "duration_seconds": 5.41,
+      "pitch_shift": -7,
+      "selected_seed": 72571494,
+      "asr_similarity": 1.0,
+      "pinyin_similarity": 1.0,
+      "sha256": "d02807a5aa136c097831f982afb50bed1049c0d914568f804e553c142cf948ed"
+    },
+    {
+      "id": "chunk-02",
+      "score": "chunks/chunk-02.soulx.json",
+      "lyrics": "柔揉疲惫的眼睛停下来看一看美好简单",
+      "duration_seconds": 10.11,
+      "pitch_shift": -3,
+      "selected_seed": 48500562,
+      "asr_similarity": 0.9091,
+      "pinyin_similarity": 0.9697,
+      "sha256": "406e1c419dc62865cb256878a334398995ad73bc9458329c7b1228ff8da6dd62"
+    },
+    {
+      "id": "chunk-03",
+      "score": "chunks/chunk-03.soulx.json",
+      "lyrics": "你看小狗在家树叶会笑风声在呢那",
+      "duration_seconds": 7.04,
+      "pitch_shift": -7,
+      "selected_seed": 56941294,
+      "asr_similarity": 0.8,
+      "pinyin_similarity": 0.9783,
+      "sha256": "8aeb762d6a8228f293707dd77d94b1874ad499072898d556ac5fdf3af393a595"
+    },
+    {
+      "id": "chunk-04",
+      "score": "chunks/chunk-04.soulx.json",
+      "lyrics": "不如好好欣赏一秒迷迷糊糊的浪漫只要一觉醒来",
+      "duration_seconds": 7.4,
+      "pitch_shift": -5,
+      "selected_seed": 56941294,
+      "asr_similarity": 1.0,
+      "pinyin_similarity": 1.0,
+      "sha256": "2bfde80eeff97e3c2645b7783207b23d241e6c77a9c2f2d0f7d0dd08eb812e0d"
+    }
+  ],
+  "playback": {
+    "asset": "serena/014-xiaomeiman.wav",
+    "duration_seconds": 29.96,
+    "sample_rate": 16000,
+    "channels": 1,
+    "sample_format": "pcm_s16le",
+    "sha256": "98e524aa6209f5f1548513d0b3e86ab65cf915eb2e9f25612e7429ec8f8658ae"
+  }
+}

@@ -1,0 +1,3 @@
+CREATE DATABASE IF NOT EXISTS wzk_ai_voice
+  DEFAULT CHARACTER SET utf8mb4
+  DEFAULT COLLATE utf8mb4_unicode_ci;

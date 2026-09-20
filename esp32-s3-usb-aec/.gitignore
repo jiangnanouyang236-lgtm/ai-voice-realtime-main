@@ -1,0 +1,15 @@
+build/
+build-*/
+.idf_component_cache/
+managed_components/
+*.log
+*.logclear
+sdkconfig.old
+sdkconfig
+sdkconfig.clean
+sdkconfig.aec-off
+sdkconfig.verify
+.DS_Store
+.cache/
+.venv-macos-test/
+test-results/

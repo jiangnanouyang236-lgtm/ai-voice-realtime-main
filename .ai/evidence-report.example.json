@@ -1,0 +1,35 @@
+{
+  "schema_version": "ai-voice-evidence/v1",
+  "objective": "Describe the exact bounded objective",
+  "commit": "replace-with-git-commit",
+  "capability": "repository",
+  "claimed_level": "IMPLEMENTED",
+  "endpoint_scope": "localhost",
+  "observed_endpoints": [],
+  "authorization": {
+    "connectivity": false,
+    "external_write": false,
+    "hardware_action": false,
+    "reference": ""
+  },
+  "assertions": {
+    "runtime_snapshot": false,
+    "same_trace": false,
+    "trace_ids": [],
+    "bot_bindings": []
+  },
+  "evidence": [
+    {
+      "id": "targeted-tests",
+      "status": "PASS",
+      "kind": "unit",
+      "component": "repository",
+      "source": "command",
+      "observed_at": "2026-08-09T00:00:00+08:00",
+      "summary": "Replace this with the exact test command and result"
+    }
+  ],
+  "unknowns": [
+    "Live services and hardware were not exercised"
+  ]
+}

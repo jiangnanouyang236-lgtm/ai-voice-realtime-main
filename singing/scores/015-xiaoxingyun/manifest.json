@@ -1,0 +1,77 @@
+{
+  "schema_version": "singing-score-asset/v1",
+  "song_id": "015",
+  "slug": "xiaoxingyun",
+  "title": "小幸运",
+  "artist": "田馥甄",
+  "status": "IMPLEMENTED",
+  "method": {
+    "engine": "SoulX-Singer",
+    "task": "SVS",
+    "control": "continuous_f0",
+    "voice_id": "serena-v1",
+    "source_performance_artist": "田馥甄",
+    "fixed_reference": true,
+    "candidate_seeds": [
+      88405783,
+      72943910,
+      56941294,
+      72571494,
+      48500562
+    ]
+  },
+  "segments": [
+    {
+      "id": "chunk-01",
+      "score": "chunks/chunk-01.soulx.json",
+      "lyrics": "了才觉得刻骨铭心为什么",
+      "duration_seconds": 6.47,
+      "pitch_shift": -5,
+      "selected_seed": 48500562,
+      "asr_similarity": 1.0,
+      "pinyin_similarity": 1.0,
+      "sha256": "dc5e4cf5665473dd4bfab297fc02e1a6be91ac37f35f92bc15a62d5e8436ef4d"
+    },
+    {
+      "id": "chunk-02",
+      "score": "chunks/chunk-02.soulx.json",
+      "lyrics": "没有发现遇见了你是生命最好的事情",
+      "duration_seconds": 9.1,
+      "pitch_shift": -6,
+      "selected_seed": 48500562,
+      "asr_similarity": 1.0,
+      "pinyin_similarity": 1.0,
+      "sha256": "b12f3bb56ea26f684ede83b8c4c34d45e11b27925b26a987a7a467b17f2127c5"
+    },
+    {
+      "id": "chunk-03",
+      "score": "chunks/chunk-03.soulx.json",
+      "lyrics": "也许当时忙着微笑和哭泣忙着追",
+      "duration_seconds": 7.15,
+      "pitch_shift": -6,
+      "selected_seed": 48500562,
+      "asr_similarity": 1.0,
+      "pinyin_similarity": 1.0,
+      "sha256": "73e1643f465eb0b5f53d60f4caab07762c096ebbc13f2ffe2df29fe2f858e41d"
+    },
+    {
+      "id": "chunk-04",
+      "score": "chunks/chunk-04.soulx.json",
+      "lyrics": "逐天空中的流星",
+      "duration_seconds": 4.21,
+      "pitch_shift": -2,
+      "selected_seed": 48500562,
+      "asr_similarity": 0.8571,
+      "pinyin_similarity": 1.0,
+      "sha256": "e6a420a189b7195eebba543cf5c98b224136c42d33bd01c56e3b714749e816be"
+    }
+  ],
+  "playback": {
+    "asset": "serena/015-xiaoxingyun.wav",
+    "duration_seconds": 26.93,
+    "sample_rate": 16000,
+    "channels": 1,
+    "sample_format": "pcm_s16le",
+    "sha256": "56a307c0a191fadaf7240d4d4edd8ee8606a11fb739e2abf97f834aabb5a2bc8"
+  }
+}

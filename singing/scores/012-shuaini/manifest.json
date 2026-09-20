@@ -1,0 +1,66 @@
+{
+  "schema_version": "singing-score-asset/v1",
+  "song_id": "012",
+  "slug": "shuaini",
+  "title": "说爱你",
+  "artist": "蔡依林",
+  "status": "IMPLEMENTED",
+  "method": {
+    "engine": "SoulX-Singer",
+    "task": "SVS",
+    "control": "continuous_f0",
+    "voice_id": "serena-v1",
+    "source_performance_artist": "姜眠",
+    "fixed_reference": true,
+    "candidate_seeds": [
+      88405783,
+      72943910,
+      56941294,
+      72571494,
+      48500562
+    ]
+  },
+  "segments": [
+    {
+      "id": "chunk-01",
+      "score": "chunks/chunk-01.soulx.json",
+      "lyrics": "敢说爱你一开始我只顾着看你假装不经意心却飘过去还窃喜",
+      "duration_seconds": 8.05,
+      "pitch_shift": -4,
+      "selected_seed": 56941294,
+      "asr_similarity": 0.7692,
+      "pinyin_similarity": 0.9933,
+      "sha256": "badc57cf15fca70b03ed550e663d17ef7e994bf1705872eacf94093373fbf543"
+    },
+    {
+      "id": "chunk-02",
+      "score": "chunks/chunk-02.soulx.json",
+      "lyrics": "你没发现我躲在角落忙着快乐忙着感动从彼此陌生到是会是我们从没想过这爱到现在不敢期待",
+      "duration_seconds": 16.07,
+      "pitch_shift": -4,
+      "selected_seed": 88405783,
+      "asr_similarity": 0.9512,
+      "pinyin_similarity": 1.0,
+      "sha256": "816b2b3c6c76d277667cf34fece1c189c7acf95ec5618fdc5ab54e5ec57e9d09"
+    },
+    {
+      "id": "chunk-03",
+      "score": "chunks/chunk-03.soulx.json",
+      "lyrics": "要证明自己曾被你想起热离",
+      "duration_seconds": 5.86,
+      "pitch_shift": -4,
+      "selected_seed": 48500562,
+      "asr_similarity": 0.8333,
+      "pinyin_similarity": 1.0,
+      "sha256": "b348561d93946157e8521c7c1c917ff6c768478c2328d3210e2e672b42ebbc48"
+    }
+  ],
+  "playback": {
+    "asset": "serena/012-shuaini.wav",
+    "duration_seconds": 29.98,
+    "sample_rate": 16000,
+    "channels": 1,
+    "sample_format": "pcm_s16le",
+    "sha256": "2ace1e464c6555c88a699da51b13ccd92c94c16b2db4bb0341579c19b90841e4"
+  }
+}

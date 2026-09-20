@@ -1,0 +1,54 @@
+services:
+  wzk-tts:
+    image: vllm/vllm-omni:v0.22.0
+    container_name: wzk-tts
+    restart: unless-stopped
+    ipc: host
+
+    ports:
+      - "${TTS_VLLM_PORT}:8000"
+
+    volumes:
+      - /home/chase/datasets/wzk/models:/models
+      - /home/chase/datasets/wzk/hf-cache:/root/.cache/huggingface
+
+    environment:
+      NVIDIA_VISIBLE_DEVICES: "${TTS_CUDA_VISIBLE_DEVICES}"
+      NVIDIA_DRIVER_CAPABILITIES: compute,utility
+      HF_HOME: /root/.cache/huggingface
+
+    deploy:
+      resources:
+        reservations:
+          devices:
+            - driver: nvidia
+              device_ids: ["${TTS_CUDA_VISIBLE_DEVICES}"]
+              capabilities: ["gpu"]
+
+    logging:
+      driver: "json-file"
+      options:
+        max-size: "100m"
+        max-file: "5"
+
+    entrypoint: ["vllm", "serve"]
+    command:
+      - ${TTS_MODEL_PATH}
+      - --served-model-name
+      - ${TTS_SERVED_MODEL_NAME}
+      - --host
+      - 0.0.0.0
+      - --port
+      - "8000"
+      - --trust-remote-code
+      - --omni
+      - --api-key
+      - ${TTS_VLLM_API_KEY}
+      - --stage-overrides
+      - '{"0":{"max_num_seqs":16,"gpu_memory_utilization":0.55},"1":{"max_num_seqs":16,"gpu_memory_utilization":0.40}}'
+    networks:
+      - wzk-ai-net
+
+networks:
+  wzk-ai-net:
+    external: true

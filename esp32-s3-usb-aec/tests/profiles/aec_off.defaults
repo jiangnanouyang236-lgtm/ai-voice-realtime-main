@@ -1,0 +1,2 @@
+# Diagnostic-only profile for an A/B recording against the production AEC build.
+# CONFIG_AUDIO_AEC_ENABLE is not set

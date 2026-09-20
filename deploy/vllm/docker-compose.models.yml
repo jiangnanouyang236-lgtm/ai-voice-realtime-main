@@ -1,0 +1,225 @@
+name: ai-voice-models
+
+x-vllm-service: &vllm-service
+  restart: unless-stopped
+  ipc: host
+  networks:
+    - ai-voice-net
+  volumes:
+    - ${VLLM_MODEL_HOST_ROOT:-/home/chase/datasets/wzk/models}:/models
+    - ${VLLM_HF_CACHE_HOST_ROOT:-/home/chase/datasets/wzk/hf-cache}:/root/.cache/huggingface
+  logging:
+    driver: json-file
+    options:
+      max-size: ${VLLM_LOG_MAX_SIZE:-100m}
+      max-file: "${VLLM_LOG_MAX_FILE:-5}"
+
+x-vllm-healthcheck: &vllm-healthcheck
+  test: ["CMD-SHELL", "python3 -c \"import urllib.request; urllib.request.urlopen('http://127.0.0.1:8000/health', timeout=2).read()\""]
+  interval: 15s
+  timeout: 5s
+  retries: 20
+  start_period: 60s
+
+services:
+  vllm-stt:
+    <<: *vllm-service
+    build:
+      context: ./stt
+      dockerfile: Dockerfile
+    image: ${VLLM_STT_IMAGE:-wzk/vllm-qwen3-asr:v0.21.0-audio}
+    container_name: vllm-stt
+    deploy:
+      resources:
+        reservations:
+          devices:
+            - driver: nvidia
+              device_ids: ["${VLLM_STT_CUDA_VISIBLE_DEVICES:-0}"]
+              capabilities: ["gpu"]
+    ports:
+      - "${VLLM_STT_HOST_PORT:-15110}:8000"
+    entrypoint: ["/bin/sh", "-lc"]
+    command:
+      - >
+        exec vllm serve "$${VLLM_STT_MODEL_PATH}"
+        --served-model-name "$${VLLM_STT_SERVED_MODEL_NAME}"
+        --host 0.0.0.0
+        --port 8000
+        --dtype auto
+        --gpu-memory-utilization "$${VLLM_STT_GPU_MEMORY_UTILIZATION}"
+        --max-model-len "$${VLLM_STT_MAX_MODEL_LEN}"
+        --trust-remote-code
+        --api-key "$${VLLM_STT_API_KEY}"
+    environment:
+      NVIDIA_VISIBLE_DEVICES: ${VLLM_STT_CUDA_VISIBLE_DEVICES:-0}
+      NVIDIA_DRIVER_CAPABILITIES: compute,utility
+      HF_HOME: /root/.cache/huggingface
+      VLLM_STT_MODEL_PATH: ${VLLM_STT_MODEL_PATH:-/models/Qwen3-ASR-1.7B}
+      VLLM_STT_SERVED_MODEL_NAME: ${VLLM_STT_SERVED_MODEL_NAME:-Qwen3-ASR-1.7B}
+      VLLM_STT_GPU_MEMORY_UTILIZATION: ${VLLM_STT_GPU_MEMORY_UTILIZATION:-0.80}
+      VLLM_STT_MAX_MODEL_LEN: ${VLLM_STT_MAX_MODEL_LEN:-4096}
+      VLLM_STT_API_KEY: ${VLLM_STT_API_KEY:-}
+    healthcheck: *vllm-healthcheck
+
+  vllm-llm:
+    <<: *vllm-service
+    image: ${VLLM_LLM_IMAGE:-vllm/vllm-openai:v0.21.0}
+    container_name: vllm-llm
+    deploy:
+      resources:
+        reservations:
+          devices:
+            - driver: nvidia
+              device_ids: ["${VLLM_LLM_CUDA_VISIBLE_DEVICES:-0}"]
+              capabilities: ["gpu"]
+    ports:
+      - "${VLLM_LLM_HOST_PORT:-15101}:8000"
+    entrypoint: ["/bin/sh", "-lc"]
+    command:
+      - >
+        exec vllm serve "$${VLLM_LLM_MODEL_PATH}"
+        --served-model-name "$${VLLM_LLM_SERVED_MODEL_NAME}"
+        --host 0.0.0.0
+        --port 8000
+        --dtype auto
+        --gpu-memory-utilization "$${VLLM_LLM_GPU_MEMORY_UTILIZATION}"
+        --max-model-len "$${VLLM_LLM_MAX_MODEL_LEN}"
+        --reasoning-parser qwen3
+        --enable-auto-tool-choice
+        --tool-call-parser hermes
+        --api-key "$${VLLM_LLM_API_KEY}"
+    environment:
+      NVIDIA_VISIBLE_DEVICES: ${VLLM_LLM_CUDA_VISIBLE_DEVICES:-0}
+      NVIDIA_DRIVER_CAPABILITIES: compute,utility
+      HF_HOME: /root/.cache/huggingface
+      VLLM_LLM_MODEL_PATH: ${VLLM_LLM_MODEL_PATH:-/models/qwen3-5-9b}
+      VLLM_LLM_SERVED_MODEL_NAME: ${VLLM_LLM_SERVED_MODEL_NAME:-qwen3-5-9b}
+      VLLM_LLM_GPU_MEMORY_UTILIZATION: ${VLLM_LLM_GPU_MEMORY_UTILIZATION:-0.80}
+      VLLM_LLM_MAX_MODEL_LEN: ${VLLM_LLM_MAX_MODEL_LEN:-32768}
+      VLLM_LLM_API_KEY: ${VLLM_LLM_API_KEY:-}
+    healthcheck: *vllm-healthcheck
+
+  vllm-router:
+    <<: *vllm-service
+    image: ${VLLM_ROUTER_IMAGE:-vllm/vllm-openai:v0.21.0}
+    container_name: vllm-router
+    deploy:
+      resources:
+        reservations:
+          devices:
+            - driver: nvidia
+              device_ids: ["${VLLM_ROUTER_CUDA_VISIBLE_DEVICES:-0}"]
+              capabilities: ["gpu"]
+    ports:
+      - "${VLLM_ROUTER_HOST_PORT:-15100}:8000"
+    entrypoint: ["/bin/sh", "-lc"]
+    command:
+      - >
+        exec vllm serve "$${VLLM_ROUTER_MODEL_PATH}"
+        --served-model-name "$${VLLM_ROUTER_SERVED_MODEL_NAME}"
+        --host 0.0.0.0
+        --port 8000
+        --dtype auto
+        --gpu-memory-utilization "$${VLLM_ROUTER_GPU_MEMORY_UTILIZATION}"
+        --max-model-len "$${VLLM_ROUTER_MAX_MODEL_LEN}"
+        --max-num-seqs "$${VLLM_ROUTER_MAX_NUM_SEQS}"
+        --max-num-batched-tokens "$${VLLM_ROUTER_MAX_NUM_BATCHED_TOKENS}"
+        --enable-prefix-caching
+        --api-key "$${VLLM_ROUTER_API_KEY}"
+    environment:
+      NVIDIA_VISIBLE_DEVICES: ${VLLM_ROUTER_CUDA_VISIBLE_DEVICES:-0}
+      NVIDIA_DRIVER_CAPABILITIES: compute,utility
+      HF_HOME: /root/.cache/huggingface
+      VLLM_ROUTER_MODEL_PATH: ${VLLM_ROUTER_MODEL_PATH:-/models/qwen3-5-4b}
+      VLLM_ROUTER_SERVED_MODEL_NAME: ${VLLM_ROUTER_SERVED_MODEL_NAME:-qwen3-5-4b}
+      VLLM_ROUTER_GPU_MEMORY_UTILIZATION: ${VLLM_ROUTER_GPU_MEMORY_UTILIZATION:-0.60}
+      VLLM_ROUTER_MAX_MODEL_LEN: ${VLLM_ROUTER_MAX_MODEL_LEN:-8192}
+      VLLM_ROUTER_MAX_NUM_SEQS: ${VLLM_ROUTER_MAX_NUM_SEQS:-16}
+      VLLM_ROUTER_MAX_NUM_BATCHED_TOKENS: ${VLLM_ROUTER_MAX_NUM_BATCHED_TOKENS:-8192}
+      VLLM_ROUTER_API_KEY: ${VLLM_ROUTER_API_KEY:-}
+    healthcheck: *vllm-healthcheck
+
+  vllm-tts:
+    <<: *vllm-service
+    image: ${VLLM_TTS_IMAGE:-vllm/vllm-omni:v0.22.0}
+    container_name: vllm-tts
+    deploy:
+      resources:
+        reservations:
+          devices:
+            - driver: nvidia
+              device_ids: ["${VLLM_TTS_CUDA_VISIBLE_DEVICES:-0}"]
+              capabilities: ["gpu"]
+    ports:
+      - "${VLLM_TTS_HOST_PORT:-15120}:8000"
+    entrypoint: ["/bin/sh", "-lc"]
+    command:
+      - |
+        if [ -z "$${VLLM_TTS_STAGE_OVERRIDES}" ]; then
+          VLLM_TTS_STAGE_OVERRIDES='{"0":{"max_num_seqs":16,"gpu_memory_utilization":0.55},"1":{"max_num_seqs":16,"gpu_memory_utilization":0.40}}'
+        fi
+        exec vllm serve "$${VLLM_TTS_MODEL_PATH}" \
+          --served-model-name "$${VLLM_TTS_SERVED_MODEL_NAME}" \
+          --host 0.0.0.0 \
+          --port 8000 \
+          --trust-remote-code \
+          --omni \
+          --api-key "$${VLLM_TTS_API_KEY}" \
+          --stage-overrides "$${VLLM_TTS_STAGE_OVERRIDES}"
+    environment:
+      NVIDIA_VISIBLE_DEVICES: ${VLLM_TTS_CUDA_VISIBLE_DEVICES:-0}
+      NVIDIA_DRIVER_CAPABILITIES: compute,utility
+      HF_HOME: /root/.cache/huggingface
+      VLLM_TTS_MODEL_PATH: ${VLLM_TTS_MODEL_PATH:-/models/qwen3-tts}
+      VLLM_TTS_SERVED_MODEL_NAME: ${VLLM_TTS_SERVED_MODEL_NAME:-qwen3-tts}
+      VLLM_TTS_API_KEY: ${VLLM_TTS_API_KEY:-}
+      VLLM_TTS_STAGE_OVERRIDES: ${VLLM_TTS_STAGE_OVERRIDES:-}
+    healthcheck: *vllm-healthcheck
+
+  vllm-llm-mini:
+    <<: *vllm-service
+    profiles: ["mini"]
+    image: ${VLLM_LLM_MINI_IMAGE:-vllm/vllm-openai:v0.21.0}
+    container_name: vllm-llm-mini
+    deploy:
+      resources:
+        reservations:
+          devices:
+            - driver: nvidia
+              device_ids: ["${VLLM_LLM_MINI_CUDA_VISIBLE_DEVICES:-0}"]
+              capabilities: ["gpu"]
+    ports:
+      - "${VLLM_LLM_MINI_HOST_PORT:-15102}:8000"
+    entrypoint: ["/bin/sh", "-lc"]
+    command:
+      - >
+        exec vllm serve "$${VLLM_LLM_MINI_MODEL_PATH}"
+        --served-model-name "$${VLLM_LLM_MINI_SERVED_MODEL_NAME}"
+        --host 0.0.0.0
+        --port 8000
+        --dtype auto
+        --gpu-memory-utilization "$${VLLM_LLM_MINI_GPU_MEMORY_UTILIZATION}"
+        --max-model-len "$${VLLM_LLM_MINI_MAX_MODEL_LEN}"
+        --max-num-seqs "$${VLLM_LLM_MINI_MAX_NUM_SEQS}"
+        --max-num-batched-tokens "$${VLLM_LLM_MINI_MAX_NUM_BATCHED_TOKENS}"
+        --enable-prefix-caching
+        --enable-auto-tool-choice
+        --tool-call-parser qwen3_coder
+        --api-key "$${VLLM_LLM_MINI_API_KEY}"
+    environment:
+      NVIDIA_VISIBLE_DEVICES: ${VLLM_LLM_MINI_CUDA_VISIBLE_DEVICES:-0}
+      NVIDIA_DRIVER_CAPABILITIES: compute,utility
+      HF_HOME: /root/.cache/huggingface
+      VLLM_LLM_MINI_MODEL_PATH: ${VLLM_LLM_MINI_MODEL_PATH:-/models/qwen3-5-mini}
+      VLLM_LLM_MINI_SERVED_MODEL_NAME: ${VLLM_LLM_MINI_SERVED_MODEL_NAME:-qwen3-5-mini}
+      VLLM_LLM_MINI_GPU_MEMORY_UTILIZATION: ${VLLM_LLM_MINI_GPU_MEMORY_UTILIZATION:-0.60}
+      VLLM_LLM_MINI_MAX_MODEL_LEN: ${VLLM_LLM_MINI_MAX_MODEL_LEN:-8192}
+      VLLM_LLM_MINI_MAX_NUM_SEQS: ${VLLM_LLM_MINI_MAX_NUM_SEQS:-16}
+      VLLM_LLM_MINI_MAX_NUM_BATCHED_TOKENS: ${VLLM_LLM_MINI_MAX_NUM_BATCHED_TOKENS:-8192}
+      VLLM_LLM_MINI_API_KEY: ${VLLM_LLM_MINI_API_KEY:-}
+    healthcheck: *vllm-healthcheck
+
+networks:
+  ai-voice-net:
+    name: ${AI_VOICE_DOCKER_NETWORK:-wzk-ai-net}
+    external: true

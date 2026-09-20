@@ -1,0 +1,47 @@
+{
+  "schema_version": "singing-score-asset/v3-single-inference-40s",
+  "song_id": "023",
+  "slug": "yinghuacao",
+  "title": "樱花草",
+  "artist": "张韶涵",
+  "status": "IMPLEMENTED",
+  "method": {
+    "engine": "SoulX-Singer",
+    "task": "SVS",
+    "control": "continuous_f0",
+    "voice_id": "serena-v1",
+    "source_performance_artist": "恋音",
+    "fixed_reference": true,
+    "candidate_seeds": [
+      88405783,
+      72943910,
+      56941294,
+      72571494,
+      48500562
+    ],
+    "inference_mode": "single_pass_38s",
+    "note": "1 chunk × 1 SVS inference session, no chunk-boundary stitching"
+  },
+  "segments": [
+    {
+      "id": "chunk-01",
+      "score": "chunks/chunk-01.soulx.json",
+      "lyrics": "晚风吹动着竹林月光拉长的身影萤火虫一闪闪满山飞舞的铅笔天上银河在发光闭上风铃来歌唱去旅行在远方古老浪漫的神话流水走过就夏四季的变换幸福在蔓延爱你永恒不孤",
+      "duration_seconds": 38.42,
+      "pitch_shift": -4,
+      "selected_seed": 88405783,
+      "asr_similarity": 0.84,
+      "pinyin_similarity": 0.841,
+      "octave_jumps": 8,
+      "sha256": "34ace5951a51850aac63dde0940b8ffb65b44cf66262caef38b832d42606de41"
+    }
+  ],
+  "playback": {
+    "asset": "serena/023-yinghuacao.wav",
+    "duration_seconds": 38.42,
+    "sample_rate": 16000,
+    "channels": 1,
+    "sample_format": "pcm_s16le",
+    "sha256": "ebe6117726160cd3491a86ce7acb49839ea17b0bb40b8fc9bd7b02ed14ce9485"
+  }
+}

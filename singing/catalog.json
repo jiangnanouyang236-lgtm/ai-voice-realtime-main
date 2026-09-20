@@ -1,0 +1,474 @@
+{
+  "schema_version": "singing-catalog/v2",
+  "audio_contract": {
+    "sample_rate": 16000,
+    "channels": 1,
+    "sample_format": "pcm_s16le"
+  },
+  "songs": [
+    {
+      "id": "001",
+      "slug": "aini",
+      "title": "爱你",
+      "artist": "王心凌",
+      "aliases": [
+        "爱你",
+        "爱泥",
+        "王心凌爱你",
+        "王心凌的爱你"
+      ],
+      "variants": {
+        "serena-v1": {
+          "asset": "serena/001-aini.wav",
+          "duration_seconds": 30.55,
+          "sha256": "a1ef8ad2ddf152c6fab70378d33c84371e529d67416de550fb92b915b4015800"
+        }
+      }
+    },
+    {
+      "id": "002",
+      "slug": "caihongdeweixiao",
+      "title": "彩虹的微笑",
+      "artist": "王心凌",
+      "aliases": [
+        "彩虹的微笑",
+        "彩虹微笑",
+        "彩红的微笑",
+        "王心凌彩虹的微笑"
+      ],
+      "variants": {
+        "serena-v1": {
+          "asset": "serena/002-caihongdeweixiao.wav",
+          "duration_seconds": 31.99,
+          "sha256": "9cecfb901769a66659365bf85aa28305634023adf67270f9cd373ac7384fdb7d"
+        }
+      }
+    },
+    {
+      "id": "003",
+      "slug": "dangni",
+      "title": "当你",
+      "artist": "林俊杰",
+      "aliases": [
+        "当你",
+        "当泥",
+        "林俊杰当你",
+        "林俊杰的当你"
+      ],
+      "variants": {
+        "serena-v1": {
+          "asset": "serena/003-dangni.wav",
+          "duration_seconds": 35.3,
+          "sha256": "6afa6606afb066660493b25051c00f97198eb450ecea8b7505b1c6bffbe2ea03"
+        }
+      }
+    },
+    {
+      "id": "004",
+      "slug": "honey",
+      "title": "Honey",
+      "artist": "王心凌",
+      "aliases": [
+        "honey",
+        "哈尼",
+        "王心凌honey"
+      ],
+      "variants": {
+        "serena-v1": {
+          "asset": "serena/004-honey.wav",
+          "duration_seconds": 36.31,
+          "sha256": "2f2018aa2eba428a793d97eb3ed76006e94172004c1efaf9a05184f17b8a9306"
+        }
+      }
+    },
+    {
+      "id": "005",
+      "slug": "jiemaowanwan",
+      "title": "睫毛弯弯",
+      "artist": "王心凌",
+      "aliases": [
+        "睫毛弯弯",
+        "睫毛弯",
+        "接毛弯弯",
+        "王心凌睫毛弯弯"
+      ],
+      "variants": {
+        "serena-v1": {
+          "asset": "serena/005-jiemaowanwan.wav",
+          "duration_seconds": 32.15,
+          "sha256": "1f0b7103652d6a5aaa01dd209fd1cdc65a7526525be63e1211c7614e789bf957"
+        }
+      }
+    },
+    {
+      "id": "006",
+      "slug": "qilixiang",
+      "title": "七里香",
+      "artist": "周杰伦",
+      "aliases": [
+        "七里香",
+        "七里想",
+        "七里箱",
+        "周杰伦七里香",
+        "周杰伦的七里香"
+      ],
+      "score_manifest": "scores/006-qilixiang/manifest.json",
+      "variants": {
+        "serena-v1": {
+          "asset": "serena/006-qilixiang.wav",
+          "duration_seconds": 33.32,
+          "sha256": "7746a400e0bab1e07066404a6e8eb8e851acb9f6e6ce14d8395aa97f43bb348e"
+        }
+      }
+    },
+    {
+      "id": "007",
+      "slug": "gaobaiqiqiu",
+      "title": "告白气球",
+      "artist": "周杰伦",
+      "aliases": [
+        "告白气球",
+        "告白汽球",
+        "高白气球",
+        "周杰伦告白气球",
+        "周杰伦的告白气球"
+      ],
+      "score_manifest": "scores/007-gaobaiqiqiu/manifest.json",
+      "variants": {
+        "serena-v1": {
+          "asset": "serena/007-gaobaiqiqiu.wav",
+          "duration_seconds": 30.96,
+          "sha256": "d5afedfa72b5dda506cff8c25d22bcfe0790d45fea1e25a52b8d7a931f352bb2"
+        }
+      }
+    },
+    {
+      "id": "008",
+      "slug": "qingtian",
+      "title": "晴天",
+      "artist": "周杰伦",
+      "aliases": [
+        "晴天",
+        "情天",
+        "青天",
+        "周杰伦晴天",
+        "周杰伦的晴天"
+      ],
+      "score_manifest": "scores/008-qingtian/manifest.json",
+      "variants": {
+        "serena-v1": {
+          "asset": "serena/008-qingtian.wav",
+          "duration_seconds": 30.86,
+          "sha256": "b6c5db43a3b15a687332e2df030bdb52949d6b7e0479ff8a1d18ad1101850419"
+        }
+      }
+    },
+    {
+      "id": "009",
+      "slug": "pugongying",
+      "title": "蒲公英的约定",
+      "artist": "周杰伦",
+      "aliases": [
+        "蒲公英的约定",
+        "蒲公英约定",
+        "蒲公英的约订",
+        "周杰伦蒲公英的约定",
+        "周杰伦的蒲公英的约定"
+      ],
+      "score_manifest": "scores/009-pugongying/manifest.json",
+      "variants": {
+        "serena-v1": {
+          "asset": "serena/009-pugongying.wav",
+          "duration_seconds": 35.49,
+          "sha256": "1fcc1b8270ca1ea629212645f50cefd52167e53fdc98d35cee7ee0cf804f5ad2"
+        }
+      }
+    },
+    {
+      "id": "010",
+      "slug": "daoxiang",
+      "title": "稻香",
+      "artist": "周杰伦",
+      "aliases": [
+        "稻香",
+        "稻乡",
+        "到香",
+        "周杰伦稻香",
+        "周杰伦的稻香"
+      ],
+      "score_manifest": "scores/010-daoxiang/manifest.json",
+      "variants": {
+        "serena-v1": {
+          "asset": "serena/010-daoxiang.wav",
+          "duration_seconds": 30.48,
+          "sha256": "b87a81f8aca8dc59b542b778f51254d3cea0b0c42002f5a7274a6366602375e6"
+        }
+      }
+    },
+    {
+      "id": "011",
+      "slug": "houlai",
+      "title": "后来",
+      "artist": "刘若英",
+      "aliases": [
+        "后来",
+        "刘若英后来",
+        "刘若英的后来"
+      ],
+      "score_manifest": "scores/011-houlai/manifest.json",
+      "variants": {
+        "serena-v1": {
+          "asset": "serena/011-houlai.wav",
+          "duration_seconds": 28.29,
+          "sha256": "6294aa23a87260fe05e00a2efed22e98093c60924386488161045f709e50278a"
+        }
+      }
+    },
+    {
+      "id": "012",
+      "slug": "shuaini",
+      "title": "说爱你",
+      "artist": "蔡依林",
+      "aliases": [
+        "说爱你",
+        "shuaini",
+        "敢说爱你",
+        "蔡依林说爱你",
+        "蔡依林的说爱你"
+      ],
+      "score_manifest": "scores/012-shuaini/manifest.json",
+      "variants": {
+        "serena-v1": {
+          "asset": "serena/012-shuaini.wav",
+          "duration_seconds": 29.98,
+          "sha256": "2ace1e464c6555c88a699da51b13ccd92c94c16b2db4bb0341579c19b90841e4"
+        }
+      }
+    },
+    {
+      "id": "013",
+      "slug": "tonghua",
+      "title": "童话",
+      "artist": "光良",
+      "aliases": [
+        "童话",
+        "tonghua",
+        "光良童话",
+        "光良的童话"
+      ],
+      "score_manifest": "scores/013-tonghua/manifest.json",
+      "variants": {
+        "serena-v1": {
+          "asset": "serena/013-tonghua.wav",
+          "duration_seconds": 29.95,
+          "sha256": "83a32cc0fb78ecab56a705c7de72816da1bc639d850c43f5b4be2fb1d1c22414"
+        }
+      }
+    },
+    {
+      "id": "014",
+      "slug": "xiaomeiman",
+      "title": "小美满",
+      "artist": "周深",
+      "aliases": [
+        "小美满",
+        "xiaomeiman",
+        "周深小美满",
+        "周深的小美满"
+      ],
+      "score_manifest": "scores/014-xiaomeiman/manifest.json",
+      "variants": {
+        "serena-v1": {
+          "asset": "serena/014-xiaomeiman.wav",
+          "duration_seconds": 29.96,
+          "sha256": "98e524aa6209f5f1548513d0b3e86ab65cf915eb2e9f25612e7429ec8f8658ae"
+        }
+      }
+    },
+    {
+      "id": "015",
+      "slug": "xiaoxingyun",
+      "title": "小幸运",
+      "artist": "田馥甄",
+      "aliases": [
+        "小幸运",
+        "xiaoxingyun",
+        "田馥甄小幸运",
+        "田馥甄的小幸运",
+        "hebe小幸运"
+      ],
+      "score_manifest": "scores/015-xiaoxingyun/manifest.json",
+      "variants": {
+        "serena-v1": {
+          "asset": "serena/015-xiaoxingyun.wav",
+          "duration_seconds": 26.93,
+          "sha256": "56a307c0a191fadaf7240d4d4edd8ee8606a11fb739e2abf97f834aabb5a2bc8"
+        }
+      }
+    },
+    {
+      "id": "016",
+      "slug": "jiandanai",
+      "title": "简单爱",
+      "artist": "周杰伦",
+      "aliases": [
+        "简单爱",
+        "jiandanai",
+        "周杰伦简单爱",
+        "周杰伦的简单爱"
+      ],
+      "score_manifest": "scores/016-jiandanai/manifest.json",
+      "variants": {
+        "serena-v1": {
+          "asset": "serena/016-jiandanai.wav",
+          "duration_seconds": 29.98,
+          "sha256": "f3b86a13431ee999679d9e98f027e354af9eaaffc4d7531df9456fa4c905df3c"
+        }
+      }
+    },
+    {
+      "id": "017",
+      "slug": "jiangnan",
+      "title": "江南",
+      "artist": "林俊杰",
+      "aliases": [
+        "江南",
+        "jiangnan",
+        "林俊杰江南",
+        "林俊杰的江南"
+      ],
+      "score_manifest": "scores/017-jiangnan/manifest.json",
+      "variants": {
+        "serena-v1": {
+          "asset": "serena/017-jiangnan.wav",
+          "duration_seconds": 27.08,
+          "sha256": "f9b50ab5c312eeaba512881e3728cf687f03a316c66fe8cd711152bdac8cd4e7"
+        }
+      }
+    },
+    {
+      "id": "018",
+      "slug": "turanhaoxiangni",
+      "title": "突然好想你",
+      "artist": "五月天",
+      "aliases": [
+        "突然好想你",
+        "turanhaoxiangni",
+        "五月天突然好想你",
+        "五月天的突然好想你"
+      ],
+      "score_manifest": "scores/018-turanhaoxiangni/manifest.json",
+      "variants": {
+        "serena-v1": {
+          "asset": "serena/018-turanhaoxiangni.wav",
+          "duration_seconds": 29.96,
+          "sha256": "482d1b5490fe15c2ca6589daa3c40cf002d4e6d69a212c68f9ec540d8335b8b4"
+        }
+      }
+    },
+    {
+      "id": "019",
+      "slug": "yongqi",
+      "title": "勇气",
+      "artist": "梁静茹",
+      "aliases": [
+        "勇气",
+        "yongqi",
+        "梁静茹勇气",
+        "梁静茹的勇气"
+      ],
+      "score_manifest": "scores/019-yongqi/manifest.json",
+      "variants": {
+        "serena-v1": {
+          "asset": "serena/019-yongqi.wav",
+          "duration_seconds": 30.0,
+          "sha256": "e9d13a65184d5d712fe707d24fb22be908650befaf6e800f5c3268c7b5d8a52d"
+        }
+      }
+    },
+    {
+      "id": "020",
+      "slug": "shinian",
+      "title": "十年",
+      "artist": "陈奕迅",
+      "aliases": [
+        "十年",
+        "shinian",
+        "陈奕迅十年",
+        "陈奕迅的十年"
+      ],
+      "score_manifest": "scores/020-shinian/manifest.json",
+      "variants": {
+        "serena-v1": {
+          "asset": "serena/020-shinian.wav",
+          "duration_seconds": 29.98,
+          "sha256": "1eaad50195fdef39f5acab06ad71f775294a62b91e667b87ac09676852a8114a"
+        }
+      }
+    },
+    {
+      "id": "021",
+      "slug": "yinxingdechibang",
+      "title": "隐形的翅膀",
+      "artist": "张韶涵",
+      "aliases": [
+        "隐形的翅膀",
+        "yinxingdechibang",
+        "张韶涵隐形的翅膀",
+        "张韶涵的隐形的翅膀"
+      ],
+      "score_manifest": "scores/021-yinxingdechibang/manifest.json",
+      "variants": {
+        "serena-v1": {
+          "asset": "serena/021-yinxingdechibang.wav",
+          "duration_seconds": 22.14,
+          "sha256": "5c5686b586f1a741ed9b8fcad078d420da5b797f4382aeb43da4da4f77abb620"
+        }
+      }
+    },
+    {
+      "id": "022",
+      "slug": "shuohuang",
+      "title": "说谎",
+      "artist": "林宥嘉",
+      "aliases": [
+        "说谎",
+        "shuohuang",
+        "林宥嘉说谎",
+        "林宥嘉的说谎"
+      ],
+      "score_manifest": "scores/022-shuohuang/manifest.json",
+      "variants": {
+        "serena-v1": {
+          "asset": "serena/022-shuohuang.wav",
+          "duration_seconds": 26.62,
+          "sha256": "d6ff34fb8264f5246ec8b7320996ca347cef750020c8cee35c9e0ca840b8b17c"
+        }
+      }
+    },
+    {
+      "id": "023",
+      "slug": "yinghuacao",
+      "title": "樱花草",
+      "artist": "张韶涵",
+      "aliases": [
+        "樱花草",
+        "yinghuacao",
+        "sakura",
+        "张韶涵樱花草",
+        "张韶涵的樱花草",
+        "单次推理版",
+        "38s连续版",
+        "38s 单次推理"
+      ],
+      "score_manifest": "scores/023-yinghuacao/manifest.json",
+      "variants": {
+        "serena-v1": {
+          "asset": "serena/023-yinghuacao.wav",
+          "duration_seconds": 38.42,
+          "sha256": "ebe6117726160cd3491a86ce7acb49839ea17b0bb40b8fc9bd7b02ed14ce9485"
+        }
+      }
+    }
+  ]
+}

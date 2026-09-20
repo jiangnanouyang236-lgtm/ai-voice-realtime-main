@@ -1,0 +1,14 @@
+{
+  "schema_version": "eval-gold-manifest/v1",
+  "gold_revision": "acceptance-2026-08-09-v6",
+  "created_at": "2026-08-09",
+  "author": "codex_strict_audit",
+  "authoring_method": "independent_rule_authored",
+  "review_status": "owner_approved",
+  "reviewed_by": "codex_strict_audit",
+  "approval_basis": "Repository owner explicitly delegated Gold review and approval on 2026-08-09.",
+  "tested_model_output_used": false,
+  "candidate_policy": "full_candidate_set",
+  "argument_policy": "exact_complete_match",
+  "notes": "Router cases were independently rewritten after auditing historical code tests and provisional generated datasets; tested-model predictions were not consulted when assigning labels. Historical cases that required unsupported parameters or had model-corrected labels were not restored. Robot dance is a fixed no-argument action; unsupported style and duration fields are forbidden."
+}

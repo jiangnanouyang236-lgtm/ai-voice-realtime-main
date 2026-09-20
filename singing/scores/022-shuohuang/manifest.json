@@ -1,0 +1,66 @@
+{
+  "schema_version": "singing-score-asset/v1",
+  "song_id": "022",
+  "slug": "shuohuang",
+  "title": "说谎",
+  "artist": "林宥嘉",
+  "status": "IMPLEMENTED",
+  "method": {
+    "engine": "SoulX-Singer",
+    "task": "SVS",
+    "control": "continuous_f0",
+    "voice_id": "serena-v1",
+    "source_performance_artist": "果茶",
+    "fixed_reference": true,
+    "candidate_seeds": [
+      88405783,
+      72943910,
+      56941294,
+      72571494,
+      48500562
+    ]
+  },
+  "segments": [
+    {
+      "id": "chunk-01",
+      "score": "chunks/chunk-01.soulx.json",
+      "lyrics": "是有过几个不错对象说起来并不寂寞孤单",
+      "duration_seconds": 13.86,
+      "pitch_shift": 1,
+      "selected_seed": 48500562,
+      "asr_similarity": 1.0,
+      "pinyin_similarity": 1.0,
+      "sha256": "daa69b5206bccfe6be71d1ac882a065d19e5eebd7835c48583115ec7f8b4310f"
+    },
+    {
+      "id": "chunk-02",
+      "score": "chunks/chunk-02.soulx.json",
+      "lyrics": "可能我浪荡让人家不安",
+      "duration_seconds": 7.2,
+      "pitch_shift": -4,
+      "selected_seed": 48500562,
+      "asr_similarity": 1.0,
+      "pinyin_similarity": 1.0,
+      "sha256": "da65263f8ef0407920d9a1751da3cf30a061f1a6d78fc516d2c6965077b0d97b"
+    },
+    {
+      "id": "chunk-03",
+      "score": "chunks/chunk-03.soulx.json",
+      "lyrics": "才会结果懂尘望",
+      "duration_seconds": 5.56,
+      "pitch_shift": 4,
+      "selected_seed": 48500562,
+      "asr_similarity": 0.5714,
+      "pinyin_similarity": 1.0,
+      "sha256": "eb5260b2f6af59ec77098c86148b5fe203bce087e12055b035a58a7f6f6dca67"
+    }
+  ],
+  "playback": {
+    "asset": "serena/022-shuohuang.wav",
+    "duration_seconds": 26.62,
+    "sample_rate": 16000,
+    "channels": 1,
+    "sample_format": "pcm_s16le",
+    "sha256": "d6ff34fb8264f5246ec8b7320996ca347cef750020c8cee35c9e0ca840b8b17c"
+  }
+}

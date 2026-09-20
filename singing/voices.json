@@ -1,0 +1,12 @@
+{
+  "schema_version": "singing-voices/v1",
+  "default_voice_id": "serena-v1",
+  "voices": [
+    {
+      "id": "serena-v1",
+      "display_name": "Serena",
+      "tts_voice_aliases": ["serena"],
+      "tts_profile_ids": ["default_tts_profile", "wzk-serena"]
+    }
+  ]
+}

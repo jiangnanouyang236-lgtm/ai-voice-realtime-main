@@ -1,0 +1,47 @@
+syntax = "proto3";
+
+package llm;
+
+// LLM 服务定义
+service LLMService {
+  // 流式对话接口
+  rpc StreamChat(ChatRequest) returns (stream ChatResponse);
+  // 清理服务端会话缓存
+  rpc ClearSession(ClearSessionRequest) returns (ClearSessionResponse);
+}
+
+// 聊天请求
+message ChatRequest {
+  string text = 1;              // 用户输入文本
+  string session_id = 2;        // 会话 ID（用于多轮对话）
+  string bot_id = 3;            // 机器人 ID（可选，默认使用 default）
+  LLMConfig config = 4;         // LLM 配置（可选，会覆盖 Bot 默认配置）
+  string robot_id = 5;          // 当前语音会话绑定的物理机器人 ID（服务端权威上下文）
+  string trace_id = 6;          // 当前轮次 Trace ID（不得用 session_id 替代）
+}
+
+// 聊天响应（流式）
+message ChatResponse {
+  string text = 1;              // AI 回复文本片段
+  bool is_final = 2;            // 是否是最后一个片段
+  string metrics_json = 3;      // 仅 final 包携带的轻量耗时指标 JSON
+}
+
+// 清理会话请求
+message ClearSessionRequest {
+  string session_id = 1;        // 会话 ID
+}
+
+// 清理会话响应
+message ClearSessionResponse {
+  bool success = 1;             // 是否成功处理请求
+  bool cleared = 2;             // 是否实际清理了已有缓存
+  string message = 3;           // 结果说明
+}
+
+// LLM 配置
+message LLMConfig {
+  string model_name = 1;        // 模型名称（如 qwen3-5-9b）
+  float temperature = 2;        // 温度参数（0.0-2.0）
+  int32 max_tokens = 3;         // 最大 token 数
+}

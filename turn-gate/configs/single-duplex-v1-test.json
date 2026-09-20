@@ -1,0 +1,36 @@
+{
+  "schema_version": "turn-gate-test-profile/v1",
+  "name": "single-duplex-v1-hardware-candidate",
+  "status": "PROVISIONAL",
+  "mode": "single_duplex",
+  "feature_flags": {
+    "turn_gate_active_enabled": true,
+    "turn_gate_models_enabled": true,
+    "turn_judge_4b_enabled": false
+  },
+  "timing_ms": {
+    "candidate_silence": 300,
+    "min_commit_silence": 600,
+    "active_deadline": 300,
+    "failure_fallback": 1000,
+    "ambiguous_hard_timeout": 1600
+  },
+  "thresholds": {
+    "smart_turn": 0.5,
+    "livekit_eou": 0.1
+  },
+  "runtime_support": {
+    "candidate_silence": "IMPLEMENTED",
+    "min_commit_silence": "IMPLEMENTED",
+    "active_deadline": "IMPLEMENTED",
+    "failure_fallback": "IMPLEMENTED",
+    "ambiguous_hard_timeout": "IMPLEMENTED",
+    "smart_turn_threshold": "IMPLEMENTED",
+    "livekit_eou_threshold": "IMPLEMENTED"
+  },
+  "notes": [
+    "This profile is a test baseline, not a production default.",
+    "LiveKit EOU 0.1 was selected on the same 50-case synthetic set and requires human or holdout validation.",
+    "Runtime wiring is implemented; hardware timing and user-perceived behavior remain unverified."
+  ]
+}

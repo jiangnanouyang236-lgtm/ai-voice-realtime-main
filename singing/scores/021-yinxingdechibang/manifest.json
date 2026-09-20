@@ -1,0 +1,66 @@
+{
+  "schema_version": "singing-score-asset/v1",
+  "song_id": "021",
+  "slug": "yinxingdechibang",
+  "title": "隐形的翅膀",
+  "artist": "张韶涵",
+  "status": "IMPLEMENTED",
+  "method": {
+    "engine": "SoulX-Singer",
+    "task": "SVS",
+    "control": "continuous_f0",
+    "voice_id": "serena-v1",
+    "source_performance_artist": "王雅君",
+    "fixed_reference": true,
+    "candidate_seeds": [
+      88405783,
+      72943910,
+      56941294,
+      72571494,
+      48500562
+    ]
+  },
+  "segments": [
+    {
+      "id": "chunk-01",
+      "score": "chunks/chunk-01.soulx.json",
+      "lyrics": "每一次都在徘徊孤单中坚强每一次",
+      "duration_seconds": 7.97,
+      "pitch_shift": -2,
+      "selected_seed": 48500562,
+      "asr_similarity": 1.0,
+      "pinyin_similarity": 1.0,
+      "sha256": "9d9ad4b0c3f08fa380804620760196ae894689c7f778433e63fdfd3ccf12402b"
+    },
+    {
+      "id": "chunk-02",
+      "score": "chunks/chunk-02.soulx.json",
+      "lyrics": "就算很受伤也不闪泪光我知道",
+      "duration_seconds": 7.51,
+      "pitch_shift": -7,
+      "selected_seed": 48500562,
+      "asr_similarity": 0.8148,
+      "pinyin_similarity": 0.9885,
+      "sha256": "7388d89ae55aa0ce849e51edb7dabc48404670528cb8720251d00cd8cfe987f7"
+    },
+    {
+      "id": "chunk-03",
+      "score": "chunks/chunk-03.soulx.json",
+      "lyrics": "我一直有双隐形的翅膀带我飞",
+      "duration_seconds": 6.66,
+      "pitch_shift": -4,
+      "selected_seed": 48500562,
+      "asr_similarity": 1.0,
+      "pinyin_similarity": 1.0,
+      "sha256": "1165edabe5579a31bb32599e09553165d9299d2a273479b2eb9f6ea6ad5af057"
+    }
+  ],
+  "playback": {
+    "asset": "serena/021-yinxingdechibang.wav",
+    "duration_seconds": 22.14,
+    "sample_rate": 16000,
+    "channels": 1,
+    "sample_format": "pcm_s16le",
+    "sha256": "5c5686b586f1a741ed9b8fcad078d420da5b797f4382aeb43da4da4f77abb620"
+  }
+}

@@ -1,0 +1,423 @@
+{
+  "schema_version": 1,
+  "test_root": "test",
+  "required_read": [
+    "AGENTS.md",
+    "docs/project-context-for-ai.md",
+    "docs/ai-runtime-environment.md"
+  ],
+  "env_files": {
+    ".env": ["local", "compose-v3", "compose-v4", "lan", "hybrid", "hardware"],
+    "rust_client/.env.local": ["hardware"],
+    "deploy/vllm/.env.models": ["model-host"]
+  },
+  "private_env_files": [
+    ".env",
+    "rust_client/.env.local",
+    "deploy/vllm/.env.models",
+    "deploy/vllm/stt/.env.stt",
+    "deploy/vllm/llm/.env.llm",
+    "deploy/vllm/llm-mini/.env.llm-mini",
+    "deploy/vllm/llm-router/.env.llm-router",
+    "deploy/vllm/tts/.env.tts"
+  ],
+  "profiles": {
+    "offline": {
+      "required_env": [],
+      "connectivity": []
+    },
+    "local": {
+      "required_env": [
+        "CONFIG_DATABASE_URL",
+        "LLM_BASE_URL",
+        "LLM_API_KEY",
+        "QWEN_ASR_BASE_URL",
+        "QWEN_ASR_API_KEY",
+        "QWEN3_TTS_CUSTOM_VOICE_WS_URL",
+        "QWEN3_TTS_CUSTOM_VOICE_API_KEY"
+      ],
+      "connectivity": ["database", "llm", "asr", "tts_custom"]
+    },
+    "compose-v3": {
+      "required_env": [
+        "CONFIG_DATABASE_URL",
+        "LLM_BASE_URL",
+        "LLM_API_KEY",
+        "LLM_ROUTER_BASE_URL",
+        "QWEN_ASR_BASE_URL",
+        "QWEN_ASR_API_KEY",
+        "QWEN3_TTS_CUSTOM_VOICE_WS_URL",
+        "QWEN3_TTS_CUSTOM_VOICE_API_KEY",
+        "LLM_VISION_GATEWAY_BASE_URL",
+        "VISION_INTERNAL_TOKEN"
+      ],
+      "connectivity": ["database", "llm", "router", "asr", "tts_custom", "vision"]
+    },
+    "compose-v4": {
+      "required_env": [
+        "CONFIG_DATABASE_URL",
+        "LLM_BASE_URL",
+        "LLM_API_KEY",
+        "LLM_ROUTER_BASE_URL",
+        "QWEN_ASR_BASE_URL",
+        "QWEN_ASR_API_KEY",
+        "QWEN3_TTS_CUSTOM_VOICE_WS_URL",
+        "QWEN3_TTS_CUSTOM_VOICE_API_KEY",
+        "LLM_VISION_GATEWAY_BASE_URL",
+        "VISION_INTERNAL_TOKEN"
+      ],
+      "connectivity": ["database", "llm", "router", "asr", "tts_custom", "vision"]
+    },
+    "lan": {
+      "required_env": [
+        "CONFIG_DATABASE_URL",
+        "LLM_BASE_URL",
+        "LLM_API_KEY",
+        "LLM_ROUTER_BASE_URL",
+        "QWEN_ASR_BASE_URL",
+        "QWEN_ASR_API_KEY",
+        "QWEN3_TTS_CUSTOM_VOICE_WS_URL",
+        "QWEN3_TTS_CUSTOM_VOICE_API_KEY",
+        "LLM_VISION_GATEWAY_BASE_URL",
+        "LLM_VISION_GATEWAY_TOKEN"
+      ],
+      "connectivity": ["database", "llm", "router", "asr", "tts_custom", "vision"]
+    },
+    "hybrid": {
+      "required_env": [
+        "CONFIG_DATABASE_URL",
+        "LLM_BASE_URL",
+        "LLM_API_KEY",
+        "LLM_ROUTER_BASE_URL",
+        "ROBOT_MQTT_HOST",
+        "ROBOT_MQTT_PORT"
+      ],
+      "connectivity": ["database", "llm", "router", "mqtt"]
+    },
+    "hardware": {
+      "required_env": [
+        "CONFIG_DATABASE_URL",
+        "LLM_BASE_URL",
+        "LLM_API_KEY",
+        "LLM_ROUTER_BASE_URL",
+        "QWEN_ASR_BASE_URL",
+        "QWEN_ASR_API_KEY",
+        "QWEN3_TTS_CUSTOM_VOICE_WS_URL",
+        "QWEN3_TTS_CUSTOM_VOICE_API_KEY",
+        "LLM_VISION_GATEWAY_BASE_URL",
+        "LLM_VISION_GATEWAY_TOKEN",
+        "GATEWAY_URL",
+        "ROBOT_ID",
+        "ROBOT_SECRET",
+        "AUDIO_FRONTEND_MODE"
+      ],
+      "connectivity": ["database", "llm", "router", "asr", "tts_custom", "vision", "gateway", "mqtt", "audio_frontend"]
+    },
+    "model-host": {
+      "required_env": [
+        "VLLM_MODEL_HOST_ROOT",
+        "VLLM_STT_HOST_PORT",
+        "VLLM_LLM_HOST_PORT",
+        "VLLM_ROUTER_HOST_PORT",
+        "VLLM_TTS_HOST_PORT"
+      ],
+      "connectivity": []
+    }
+  },
+  "endpoints": [
+    {"id": "database", "url_env": "CONFIG_DATABASE_URL", "schemes": ["mysql"]},
+    {"id": "llm", "url_env": "LLM_BASE_URL", "schemes": ["http", "https"]},
+    {"id": "router", "url_env": "LLM_ROUTER_BASE_URL", "schemes": ["http", "https"]},
+    {"id": "asr", "url_env": "QWEN_ASR_BASE_URL", "schemes": ["http", "https"]},
+    {"id": "tts_custom", "url_env": "QWEN3_TTS_CUSTOM_VOICE_WS_URL", "schemes": ["ws", "wss"]},
+    {"id": "tts_base", "url_env": "QWEN3_TTS_BASE_WS_URL", "schemes": ["ws", "wss"]},
+    {"id": "vision", "url_env": "LLM_VISION_GATEWAY_BASE_URL", "schemes": ["http", "https"]},
+    {"id": "gateway", "url_env": "GATEWAY_URL", "schemes": ["ws", "wss"]},
+    {"id": "gateway_internal", "url_env": "GATEWAY_INTERNAL_BASE_URL", "schemes": ["http", "https"]},
+    {"id": "mqtt", "host_env": "ROBOT_MQTT_HOST", "port_env": "ROBOT_MQTT_PORT"},
+    {"id": "audio_frontend", "host_env": "AUDIO_FRONTEND_HOST", "port_env": "AUDIO_FRONTEND_MIC_PORT"}
+  ],
+  "secret_env": [
+    "ADMIN_PASSWORD",
+    "ADMIN_SESSION_SECRET",
+    "CONFIG_DATABASE_URL",
+    "LLM_API_KEY",
+    "LLM_ROUTER_API_KEY",
+    "LLM_VISION_GATEWAY_TOKEN",
+    "VISION_INTERNAL_TOKEN",
+    "QWEN_ASR_API_KEY",
+    "QWEN3_TTS_CUSTOM_VOICE_API_KEY",
+    "QWEN3_TTS_BASE_API_KEY",
+    "ROBOT_SECRET",
+    "ROBOT_MQTT_PASSWORD",
+    "COGNITIVE_REPORT_MQTT_PASSWORD",
+    "WEBSEARCH_API_KEY",
+    "GO_VOICE_GATEWAY_ICE_SERVERS",
+    "ROBOTS_TASK_SERVICE_AUTHORIZATION",
+    "ASR_VLLM_API_KEY",
+    "LLM_VLLM_API_KEY",
+    "TTS_VLLM_API_KEY",
+    "VLLM_STT_API_KEY",
+    "VLLM_LLM_API_KEY",
+    "VLLM_ROUTER_API_KEY",
+    "VLLM_TTS_API_KEY",
+    "VLLM_LLM_MINI_API_KEY"
+  ],
+  "placeholder_fragments": [
+    "<server-",
+    "<robot-",
+    "replace-with-",
+    "your-api-key",
+    "example.com",
+    "user:password@"
+  ],
+  "evidence_policy": {
+    "schema_version": "ai-voice-evidence/v1",
+    "levels": {
+      "IMPLEMENTED": {
+        "required_any_kinds": ["static", "unit"],
+        "description": "代码、静态检查或单元测试通过；不代表服务或业务链路可用"
+      },
+      "LOCAL_VERIFIED": {
+        "required_all_kinds": ["local_integration"],
+        "allowed_observed_endpoint_scopes": ["localhost"],
+        "require_observed_endpoints": true,
+        "require_hashed_artifacts": true,
+        "description": "本机真实进程或协议集成通过；不得外推到生产、外部服务或硬件"
+      },
+      "HYBRID_VERIFIED": {
+        "required_all_kinds": ["hybrid_integration"],
+        "forbidden_endpoint_scopes": ["mock", "synthetic", "localhost", "hardware"],
+        "forbidden_observed_endpoint_scopes": ["mock", "synthetic", "hardware"],
+        "required_any_observed_endpoint_scopes": ["lan", "external"],
+        "require_observed_endpoints": true,
+        "require_hashed_artifacts": true,
+        "require_connectivity_authorization": true,
+        "description": "当前代码以本地真实进程运行，并连接授权的 LAN 或外部测试依赖；不代表部署环境或硬件 E2E"
+      },
+      "LIVE_VERIFIED": {
+        "required_all_kinds": ["live_service"],
+        "required_components": ["runtime_snapshot"],
+        "forbidden_endpoint_scopes": ["mock", "synthetic", "localhost"],
+        "forbidden_observed_endpoint_scopes": ["mock", "synthetic"],
+        "required_any_observed_endpoint_scopes": ["lan", "external"],
+        "require_observed_endpoints": true,
+        "require_hashed_artifacts": true,
+        "require_connectivity_authorization": true,
+        "require_runtime_snapshot": true,
+        "description": "授权的非本地真实服务链路通过，并绑定运行态与可校验证据"
+      },
+      "HARDWARE_VERIFIED": {
+        "required_all_kinds": ["live_service", "hardware"],
+        "required_components": ["runtime_snapshot"],
+        "forbidden_endpoint_scopes": ["mock", "synthetic", "localhost"],
+        "forbidden_observed_endpoint_scopes": ["mock", "synthetic"],
+        "required_any_observed_endpoint_scopes": ["hardware"],
+        "require_observed_endpoints": true,
+        "require_hashed_artifacts": true,
+        "require_connectivity_authorization": true,
+        "require_external_write_authorization": true,
+        "require_hardware_authorization": true,
+        "require_runtime_snapshot": true,
+        "description": "授权的真实服务与物理设备共同通过，并绑定运行态与可校验证据"
+      }
+    },
+    "capabilities": {
+      "repository": {},
+      "robot_mcp": {
+        "LOCAL_VERIFIED": {
+          "required_components": ["runtime_snapshot", "llm", "mcp", "mqtt_broker"],
+          "environment_endpoint_ids": ["database", "mqtt"],
+          "require_environment_artifact": true,
+          "required_assertions": {
+            "same_trace": true,
+            "min_trace_ids": 2,
+            "min_bot_bindings": 2
+          },
+          "require_runtime_snapshot": true
+        },
+        "HYBRID_VERIFIED": {
+          "required_components": ["runtime_snapshot", "llm", "mcp", "mqtt_broker"],
+          "environment_endpoint_ids": ["database", "mqtt"],
+          "require_environment_artifact": true,
+          "required_assertions": {
+            "same_trace": true,
+            "min_trace_ids": 2,
+            "min_bot_bindings": 1
+          },
+          "require_runtime_snapshot": true,
+          "require_external_write_authorization": true
+        },
+        "LIVE_VERIFIED": {
+          "required_components": ["gateway", "router", "llm", "mcp", "mqtt_broker"],
+          "environment_endpoint_ids": ["database", "gateway", "router", "llm", "mqtt"],
+          "require_environment_artifact": true,
+          "required_assertions": {
+            "same_trace": true,
+            "min_trace_ids": 2,
+            "min_bot_bindings": 2
+          },
+          "require_external_write_authorization": true
+        },
+        "HARDWARE_VERIFIED": {
+          "required_components": ["gateway", "router", "llm", "mcp", "mqtt_broker", "robot_hardware"],
+          "environment_endpoint_ids": ["database", "gateway", "router", "llm", "mqtt"],
+          "require_environment_artifact": true,
+          "required_assertions": {
+            "same_trace": true,
+            "min_trace_ids": 2,
+            "min_bot_bindings": 2
+          }
+        }
+      },
+      "voice_client_event": {
+        "HYBRID_VERIFIED": {
+          "required_components": ["runtime_snapshot", "python_gateway", "tts"],
+          "environment_endpoint_ids": ["database", "tts_custom"],
+          "require_environment_artifact": true,
+          "required_assertions": {
+            "same_trace": true,
+            "real_audio": true,
+            "active_client_event": true,
+            "llm_bypassed_by_contract": true,
+            "min_trace_ids": 1,
+            "min_bot_bindings": 1
+          },
+          "require_runtime_snapshot": true
+        }
+      },
+      "voice_direct_text": {
+        "HYBRID_VERIFIED": {
+          "required_components": ["runtime_snapshot", "python_gateway", "router", "llm", "tts"],
+          "environment_endpoint_ids": ["database", "router", "llm", "tts_custom"],
+          "require_environment_artifact": true,
+          "required_assertions": {
+            "same_trace": true,
+            "router_classifier_used": true,
+            "main_llm_response": true,
+            "real_audio": true,
+            "no_tool_call": true,
+            "asr_bypassed_by_contract": true,
+            "min_trace_ids": 1,
+            "min_bot_bindings": 1
+          },
+          "require_runtime_snapshot": true
+        }
+      },
+      "utils_tool_route": {
+        "HYBRID_VERIFIED": {
+          "required_components": ["runtime_snapshot", "python_gateway", "router", "llm", "utils_mcp", "tts"],
+          "environment_endpoint_ids": ["database", "router", "llm", "tts_custom"],
+          "require_environment_artifact": true,
+          "required_assertions": {
+            "same_trace": true,
+            "main_llm_response": true,
+            "real_audio": true,
+            "utils_tool_called_once": true,
+            "utils_fact_fidelity": true,
+            "all_enabled_bots_covered": true,
+            "asr_bypassed_by_contract": true,
+            "min_trace_ids": 1,
+            "min_bot_bindings": 1
+          },
+          "require_runtime_snapshot": true
+        }
+      },
+      "robot_voice_route": {
+        "HYBRID_VERIFIED": {
+          "required_components": ["runtime_snapshot", "python_gateway", "router", "llm", "robot_mcp", "mqtt_broker", "tts"],
+          "environment_endpoint_ids": ["database", "router", "llm", "mqtt", "tts_custom"],
+          "require_environment_artifact": true,
+          "required_assertions": {
+            "same_trace": true,
+            "exact_robot_tool": true,
+            "expected_action_types": true,
+            "independent_subscriber_received_both": true,
+            "real_audio": true,
+            "asr_bypassed_by_contract": true,
+            "min_trace_ids": 2,
+            "min_bot_bindings": 1
+          },
+          "require_runtime_snapshot": true,
+          "require_external_write_authorization": true
+        }
+      },
+      "voice_python_audio": {
+        "HYBRID_VERIFIED": {
+          "required_components": ["runtime_snapshot", "python_gateway", "stt", "router", "llm", "tts"],
+          "environment_endpoint_ids": ["database", "asr", "router", "llm", "tts_custom"],
+          "require_environment_artifact": true,
+          "required_assertions": {
+            "same_trace": true,
+            "tracked_audio_fixture": true,
+            "asr_fact_fidelity": true,
+            "main_llm_response": true,
+            "real_audio": true,
+            "min_trace_ids": 1,
+            "min_bot_bindings": 1
+          },
+          "require_runtime_snapshot": true
+        }
+      },
+      "voice_e2e": {
+        "HYBRID_VERIFIED": {
+          "required_components": ["runtime_snapshot", "rust_client", "go_gateway", "python_gateway", "stt", "router", "llm", "tts"],
+          "environment_endpoint_ids": ["database", "asr", "router", "llm", "tts_base"],
+          "require_environment_artifact": true,
+          "required_assertions": {
+            "same_trace": true,
+            "tracked_audio_fixture": true,
+            "native_webrtc_rtp": true,
+            "real_audio": true,
+            "min_trace_ids": 1,
+            "min_bot_bindings": 1
+          },
+          "require_runtime_snapshot": true
+        },
+        "LIVE_VERIFIED": {
+          "required_components": ["runtime_snapshot", "rust_client", "go_gateway", "python_gateway", "stt", "router", "llm", "tts"],
+          "required_assertions": {
+            "same_trace": true
+          }
+        },
+        "HARDWARE_VERIFIED": {
+          "required_components": ["audio_input", "rust_client", "go_gateway", "python_gateway", "stt", "llm", "tts", "audio_output"],
+          "required_assertions": {
+            "same_trace": true
+          }
+        }
+      },
+      "vision": {
+        "HYBRID_VERIFIED": {
+          "required_components": ["runtime_snapshot", "image_source", "rust_client", "go_gateway", "python_gateway", "llm", "tts"],
+          "environment_endpoint_ids": ["database", "llm", "tts_base", "vision"],
+          "require_environment_artifact": true,
+          "required_assertions": {
+            "same_trace": true,
+            "real_image": true,
+            "programmatic_image_path": true,
+            "visual_fact_fidelity": true,
+            "min_trace_ids": 1,
+            "min_bot_bindings": 1
+          },
+          "require_runtime_snapshot": true
+        },
+        "LIVE_VERIFIED": {
+          "required_components": ["image_source", "go_gateway", "python_gateway", "llm"],
+          "required_assertions": {
+            "real_image": true,
+            "same_trace": true
+          }
+        }
+      },
+      "turn_relay": {
+        "LIVE_VERIFIED": {
+          "required_components": ["rust_client", "go_gateway", "turn_server"],
+          "required_assertions": {
+            "relay_only": true
+          }
+        }
+      }
+    }
+  }
+}

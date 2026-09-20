@@ -1,0 +1,83 @@
+menu "Audio Frontend"
+
+config AUDIO_MIC_CHANNELS
+    int "Microphone channels"
+    range 1 2
+    default 1
+    help
+        Use 1 for the current single-mic USB+AEC pipeline.
+        Use 2 only after confirming dual-mic hardware and algorithm path.
+
+config AUDIO_ENABLE_AFE
+    bool "Enable AFE task (AEC)"
+    default y
+    help
+        Keep enabled for microphone processing path.
+        This project keeps AFE focused on AEC.
+
+config AUDIO_AFE_HIGH_PERF_MODE
+    bool "Use AFE high-performance mode"
+    default y
+    depends on AUDIO_ENABLE_AFE
+    help
+        Select AFE_MODE_HIGH_PERF for stronger AEC/NS capability at higher
+        CPU/memory cost.
+
+config AUDIO_AEC_ENABLE
+    bool "Enable AEC by default"
+    default y
+    depends on AUDIO_ENABLE_AFE
+    help
+        Default AEC state after boot.
+
+config AUDIO_REF_DELAY_FRAMES
+    int "Reference delay frames for AEC alignment"
+    range 0 8
+    default 0
+    depends on AUDIO_ENABLE_AFE
+    help
+        Delay playback reference by N frames (1 frame = 10 ms at 16 kHz, 160 samples).
+        Useful when DAC/amp/acoustic path introduces extra delay. Start from 0 and test 1~3.
+
+config AUDIO_USB_UAC_ENABLE
+    bool "Enable USB UAC speaker bridge (host -> ESP32 -> speaker)"
+    default y
+    help
+        Enable UAC OUT bridge on USB-OTG port. Host PCM data will be used as
+        playback source and copied into the AEC reference path.
+
+config AUDIO_USB_SPK_BUFFER_MS
+    int "USB speaker jitter buffer (ms)"
+    range 20 2000
+    default 400
+    depends on AUDIO_USB_UAC_ENABLE
+    help
+        Buffer depth for absorbing host USB scheduling jitter. Larger values
+        improve stability but increase end-to-end playback latency.
+
+config AUDIO_USB_UAC_INPUT_ENABLE
+    bool "Enable USB UAC microphone uplink (AFE out -> host)"
+    default y
+    depends on AUDIO_USB_UAC_ENABLE
+    help
+        Enable UAC IN bridge. Processed audio from AFE output is sent to host
+        as USB microphone stream.
+
+config AUDIO_USB_MIC_GAIN_DB
+    int "USB microphone digital gain (dB)"
+    range 0 30
+    default 0
+    depends on AUDIO_USB_UAC_INPUT_ENABLE
+    help
+        Digital gain applied to USB mic uplink.
+        Start at 0 dB. Increase only after measuring clipping and noise floor.
+
+config AUDIO_USB_LOG_INTERVAL_SEC
+    int "USB bridge stats log interval (sec)"
+    range 1 30
+    default 2
+    depends on AUDIO_USB_UAC_ENABLE
+    help
+        Interval for periodic USB bridge statistics logs.
+
+endmenu

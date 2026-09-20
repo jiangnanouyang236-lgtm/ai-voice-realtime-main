@@ -1,0 +1,21 @@
+{"id":"tool-001","text":"向前走","expected_tool":"move_robot","expected_args":{"action":"forward"},"rationale":"真实 Robot MCP 的固定前进动作"}
+{"id":"tool-002","text":"往后退","expected_tool":"move_robot","expected_args":{"action":"backward"},"rationale":"真实 Robot MCP 的固定后退动作"}
+{"id":"tool-003","text":"向左转","expected_tool":"move_robot","expected_args":{"action":"turn_left"},"rationale":"真实 Robot MCP 使用 turn_left"}
+{"id":"tool-004","text":"向右转","expected_tool":"move_robot","expected_args":{"action":"turn_right"},"rationale":"真实 Robot MCP 使用 turn_right"}
+{"id":"tool-005","text":"停下来","expected_tool":"move_robot","expected_args":{"action":"stop"},"rationale":"真实 Robot MCP 的停止动作"}
+{"id":"tool-006","text":"和我打个招呼","expected_tool":"move_robot","expected_args":{"action":"greet"},"rationale":"打招呼是 move_robot 的固定 action"}
+{"id":"tool-007","text":"和我握个手","expected_tool":"move_robot","expected_args":{"action":"handshake"},"rationale":"握手是 move_robot 的固定 action"}
+{"id":"tool-008","text":"欢呼一下","expected_tool":"move_robot","expected_args":{"action":"cheer"},"rationale":"欢呼是 move_robot 的固定 action"}
+{"id":"tool-009","text":"跳个舞","expected_tool":"dance","expected_args":{},"rationale":"跳舞是无风格、无时长参数的固定动作"}
+{"id":"tool-010","text":"开始巡逻","expected_tool":"patrol","expected_args":{},"rationale":"真实 Robot MCP 工具名为 patrol"}
+{"id":"tool-011","text":"跟着我走","expected_tool":"follow","expected_args":{},"rationale":"明确启动追随任务"}
+{"id":"tool-012","text":"返回充电桩","expected_tool":"return_to_charge","expected_args":{},"rationale":"明确回桩动作"}
+{"id":"tool-013","text":"开始创建地图","expected_tool":"create_map","expected_args":{},"rationale":"明确建图任务"}
+{"id":"tool-014","text":"播放音乐","expected_tool":"sing","expected_args":{},"rationale":"真实 Robot MCP 将唱歌和播放音乐统一为固定 sing 任务"}
+{"id":"tool-015","text":"呼叫视频电话","expected_tool":"call_video","expected_args":{},"rationale":"真实 Robot MCP 不接收联系人参数"}
+{"id":"tool-016","text":"检测我现在做的手势","expected_tool":"detect_gesture","expected_args":{},"rationale":"明确手势检测"}
+{"id":"tool-017","text":"看看画面里有没有宠物","expected_tool":"detect_pet","expected_args":{},"rationale":"明确宠物检测"}
+{"id":"tool-018","text":"理解一下当前环境","expected_tool":"understand_environment","expected_args":{},"rationale":"明确环境理解"}
+{"id":"tool-019","text":"取消机器人当前任务","expected_tool":"cancel_robot_task","expected_args":{},"rationale":"真实 Robot MCP 工具名为 cancel_robot_task"}
+{"id":"tool-020","text":"告诉我当前时间和日期","expected_tool":"get_now_context","expected_args":{},"rationale":"真实 Utils MCP 的当前时间和日历工具"}
+{"id":"tool-021","text":"讲一个笑话","expected_tool":"no_tool","expected_args":{},"rationale":"普通内容生成不应调用工具"}

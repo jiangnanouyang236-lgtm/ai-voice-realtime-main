@@ -1,0 +1,46 @@
+syntax = "proto3";
+
+package tts;
+
+// TTS 流式服务
+service TTSService {
+  // 双向流式：客户端发送文本流，服务端返回音频流
+  rpc StreamTextToSpeech(stream TextChunk) returns (stream AudioChunk);
+}
+
+// TTS 配置
+message TTSConfig {
+  string tts_profile_id = 1; // TTS Profile ID，由 TTS 服务解析 Provider 配置
+}
+
+// 文本块消息
+message TextChunk {
+  string text = 1;           // 文本内容
+  bool is_final = 2;         // 是否是最后一块
+  string session_id = 3;     // 会话ID，用于关联同一次对话
+  TTSConfig config = 4;      // TTS配置（仅第一个消息需要）
+  string trace_id = 5;       // Gateway trace ID
+  string round_id = 6;       // 轮次ID
+  string playback_id = 7;    // 播放ID
+  double gateway_send_epoch_ms = 8; // Gateway 提交该文本块的时间
+}
+
+// 音频块消息
+message AudioChunk {
+  bytes audio_data = 1;      // 音频数据（PCM格式）
+  int32 sample_rate = 2;     // 采样率
+  int32 channels = 3;        // 声道数
+  int32 sample_width = 4;    // 采样位深度（字节数）
+  bool is_final = 5;         // 是否是最后一块音频
+  string trace_id = 6;       // Gateway trace ID
+  string round_id = 7;       // 轮次ID
+  string playback_id = 8;    // 播放ID
+  double tts_server_receive_epoch_ms = 9;      // TTS gRPC 收到请求的时间
+  double tts_first_text_receive_epoch_ms = 10; // TTS 收到首段文本的时间
+  double tts_first_text_send_epoch_ms = 11;    // TTS 向本地 Qwen3 WS 发送首段文本的时间
+  double tts_first_pcm_epoch_ms = 12;          // 本地 Qwen3 WS 返回首个 PCM 的时间
+  double tts_grpc_yield_epoch_ms = 13;         // TTS gRPC 送出当前音频块的时间
+  double tts_internal_first_pcm_ms = 14;       // TTS gRPC 收到请求到本地首 PCM
+  double tts_first_text_to_first_pcm_ms = 15;  // 首段文本进入 TTS 到本地首 PCM
+  double tts_request_to_grpc_yield_ms = 16;    // TTS gRPC 收到请求到当前音频块送出
+}

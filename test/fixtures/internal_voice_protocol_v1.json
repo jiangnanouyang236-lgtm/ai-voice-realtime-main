@@ -1,0 +1,42 @@
+{
+  "heartbeat_ping": {
+    "version": 1,
+    "type": "heartbeat.ping",
+    "session_id": "rtc_fixture_1",
+    "timestamp_ms": 1780000000000,
+    "payload": {
+      "nonce": "ping-1"
+    }
+  },
+  "response_cancelled": {
+    "version": 1,
+    "type": "response.cancelled",
+    "session_id": "rtc_fixture_1",
+    "trace_id": "trace_fixture_1",
+    "round_id": "round_fixture_1",
+    "playback_id": "round_fixture_1:playback",
+    "timestamp_ms": 1780000000001,
+    "payload": {
+      "reason": "wake_interrupt",
+      "cancelled_stage": "tts",
+      "expected": true
+    }
+  },
+  "response_error": {
+    "version": 1,
+    "type": "response.error",
+    "session_id": "rtc_fixture_1",
+    "trace_id": "trace_fixture_1",
+    "utterance_id": "utt_fixture_1",
+    "timestamp_ms": 1780000000002,
+    "payload": {
+      "origin": "python_gateway",
+      "stage": "tts",
+      "code": "TTS_UPSTREAM_UNAVAILABLE",
+      "message": "TTS upstream unavailable",
+      "cause_code": "UNAVAILABLE",
+      "retryable": true,
+      "fatal": false
+    }
+  }
+}

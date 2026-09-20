@@ -1,0 +1,6 @@
+# docker build -f Dockerfile.ubuntu22 -t wzk-go-gateway:ubuntu22-amd64 .
+FROM scratch
+
+ARG GO_VOICE_GATEWAY_BINARY=./go_voice_gateway
+COPY ${GO_VOICE_GATEWAY_BINARY} /go_voice_gateway
+CMD ["/go_voice_gateway"]

@@ -1,0 +1,55 @@
+name: ai-voice-v3
+
+x-mcp-service: &mcp-service
+  build:
+    context: ../..
+    dockerfile: docker/python-services.Dockerfile
+  restart: unless-stopped
+  working_dir: /app
+  profiles: ["mcp"]
+  networks:
+    - ai-voice-net
+  environment: &mcp-common-env
+    CONFIG_DATABASE_URL: ${CONFIG_DATABASE_URL:-}
+    LOG_FORMAT: ${LOG_FORMAT:-json}
+    LOG_LEVEL: ${LOG_LEVEL:-info}
+    LOG_MAX_BYTES: ${LOG_MAX_BYTES:-10485760}
+    LOG_BACKUP_COUNT: ${LOG_BACKUP_COUNT:-5}
+
+services:
+  mcp-utils:
+    <<: *mcp-service
+    command: ["python", "mcp_servers/utils_sse_server.py"]
+    ports:
+      - "${AI_VOICE_HOST_BIND_IP:-127.0.0.1}:${MCP_UTILS_HOST_PORT:-5004}:5004"
+
+  mcp-robot:
+    <<: *mcp-service
+    command: ["python", "mcp_servers/robot_sse_server.py"]
+    environment:
+      <<: *mcp-common-env
+      ROBOT_MQTT_HOST: ${ROBOT_MQTT_HOST:-}
+      ROBOT_MQTT_PORT: ${ROBOT_MQTT_PORT:-1883}
+      ROBOT_MQTT_USERNAME: ${ROBOT_MQTT_USERNAME:-}
+      ROBOT_MQTT_PASSWORD: ${ROBOT_MQTT_PASSWORD:-}
+      ROBOT_MQTT_TOPIC_PREFIX: ${ROBOT_MQTT_TOPIC_PREFIX:-windaka}
+      ROBOT_MQTT_DEFAULT_ROBOT_ID: ${ROBOT_MQTT_DEFAULT_ROBOT_ID:-companion_01}
+    ports:
+      - "${AI_VOICE_HOST_BIND_IP:-127.0.0.1}:${MCP_ROBOT_HOST_PORT:-5003}:5003"
+
+  mcp-singing:
+    <<: *mcp-service
+    command: ["python", "mcp_servers/singing_sse_server.py"]
+    environment:
+      <<: *mcp-common-env
+      SINGING_MCP_PORT: 5005
+      SINGING_CATALOG_PATH: ${SINGING_CATALOG_PATH:-/app/singing/catalog.json}
+      SINGING_VOICES_PATH: ${SINGING_VOICES_PATH:-/app/singing/voices.json}
+      SINGING_DEFAULT_VOICE_ID: ${SINGING_DEFAULT_VOICE_ID:-serena-v1}
+    ports:
+      - "${AI_VOICE_HOST_BIND_IP:-127.0.0.1}:${MCP_SINGING_HOST_PORT:-5005}:5005"
+
+networks:
+  ai-voice-net:
+    name: ${AI_VOICE_DOCKER_NETWORK:-wzk-ai-net}
+    external: true

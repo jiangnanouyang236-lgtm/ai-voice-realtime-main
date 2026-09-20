@@ -1,0 +1,66 @@
+{
+  "schema_version": "singing-score-asset/v1",
+  "song_id": "011",
+  "slug": "houlai",
+  "title": "后来",
+  "artist": "刘若英",
+  "status": "IMPLEMENTED",
+  "method": {
+    "engine": "SoulX-Singer",
+    "task": "SVS",
+    "control": "continuous_f0",
+    "voice_id": "serena-v1",
+    "source_performance_artist": "刘若英",
+    "fixed_reference": true,
+    "candidate_seeds": [
+      88405783,
+      72943910,
+      56941294,
+      72571494,
+      48500562
+    ]
+  },
+  "segments": [
+    {
+      "id": "chunk-01",
+      "score": "chunks/chunk-01.soulx.json",
+      "lyrics": "我蓝色百褶裙上爱你",
+      "duration_seconds": 7.19,
+      "pitch_shift": 0,
+      "selected_seed": 48500562,
+      "asr_similarity": 0.7778,
+      "pinyin_similarity": 1.0,
+      "sha256": "db384cb28cc6507b6d27ed735a65d8d2d4e7d92cb1255d851e3a62126cd97539"
+    },
+    {
+      "id": "chunk-02",
+      "score": "chunks/chunk-02.soulx.json",
+      "lyrics": "你轻声说我低下头闻见一阵芬芳嗯",
+      "duration_seconds": 11.39,
+      "pitch_shift": -2,
+      "selected_seed": 72943910,
+      "asr_similarity": 1.0,
+      "pinyin_similarity": 1.0,
+      "sha256": "0936cc7105cc622f186d464bb2651c30b29205694f94a075e36abb96a9a87c8e"
+    },
+    {
+      "id": "chunk-03",
+      "score": "chunks/chunk-03.soulx.json",
+      "lyrics": "那个永恒的夜晚十七岁仲夏你吻我的那个夜晚",
+      "duration_seconds": 9.71,
+      "pitch_shift": 1,
+      "selected_seed": 56941294,
+      "asr_similarity": 0.85,
+      "pinyin_similarity": 1.0,
+      "sha256": "9c7c8fbd000d3314a7c8272518786c95aac5d40a8c2b3f711aafa952debf554e"
+    }
+  ],
+  "playback": {
+    "asset": "serena/011-houlai.wav",
+    "duration_seconds": 28.29,
+    "sample_rate": 16000,
+    "channels": 1,
+    "sample_format": "pcm_s16le",
+    "sha256": "6294aa23a87260fe05e00a2efed22e98093c60924386488161045f709e50278a"
+  }
+}

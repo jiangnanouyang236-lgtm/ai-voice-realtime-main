@@ -1,0 +1,52 @@
+name: Bug report
+description: Report a reproducible problem in the voice system.
+title: "[Bug] "
+labels: ["bug"]
+body:
+  - type: textarea
+    id: summary
+    attributes:
+      label: Summary
+      description: What happened?
+    validations:
+      required: true
+  - type: dropdown
+    id: area
+    attributes:
+      label: Area
+      options:
+        - Rust client
+        - Python client
+        - Gateway
+        - LLM
+        - STT
+        - TTS
+        - MCP
+        - Admin UI
+        - Config / Deployment
+        - Unknown
+    validations:
+      required: true
+  - type: textarea
+    id: logs
+    attributes:
+      label: Logs
+      description: Paste relevant logs. Remove secrets before posting.
+      render: shell
+  - type: textarea
+    id: repro
+    attributes:
+      label: Reproduction Steps
+      placeholder: |
+        1. Start ...
+        2. Say ...
+        3. Observe ...
+  - type: textarea
+    id: expected
+    attributes:
+      label: Expected Behavior
+  - type: textarea
+    id: environment
+    attributes:
+      label: Environment
+      placeholder: OS, branch, commit, deployment mode, relevant env vars without secrets.

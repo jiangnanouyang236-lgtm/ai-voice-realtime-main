@@ -1,0 +1,192 @@
+name: ai-voice-v3
+
+x-python-service: &python-service
+  build:
+    context: ../..
+    dockerfile: docker/python-services.Dockerfile
+  restart: unless-stopped
+  working_dir: /app
+  networks:
+    - ai-voice-net
+  environment: &python-common-env
+    CONFIG_DATABASE_URL: ${CONFIG_DATABASE_URL:-}
+    LOG_FORMAT: ${LOG_FORMAT:-json}
+    LOG_LEVEL: ${LOG_LEVEL:-info}
+    LOG_MAX_BYTES: ${LOG_MAX_BYTES:-10485760}
+    LOG_BACKUP_COUNT: ${LOG_BACKUP_COUNT:-5}
+
+services:
+  stt:
+    <<: *python-service
+    command: ["python", "stt/stt_grpc_server.py"]
+    environment:
+      <<: *python-common-env
+      STT_GRPC_BIND_HOST: 0.0.0.0
+      STT_GRPC_SERVER_PORT: 50054
+      STT_GRPC_MAX_WORKERS: ${STT_GRPC_MAX_WORKERS:-10}
+      STT_PROVIDER: ${STT_PROVIDER:-qwen}
+      STT_MAX_CONCURRENT_INFERENCES: ${STT_MAX_CONCURRENT_INFERENCES:-8}
+      QWEN_ASR_BASE_URL: ${QWEN_ASR_BASE_URL:-}
+      QWEN_ASR_API_KEY: ${QWEN_ASR_API_KEY:-}
+      QWEN_ASR_MODEL: ${QWEN_ASR_MODEL:-Qwen3-ASR-1.7B}
+      QWEN_ASR_TIMEOUT: ${QWEN_ASR_TIMEOUT:-30}
+    ports:
+      - "${AI_VOICE_HOST_BIND_IP:-127.0.0.1}:${STT_GRPC_HOST_PORT:-50054}:50054"
+    healthcheck:
+      test: ["CMD", "python", "-c", "import socket; s=socket.create_connection(('127.0.0.1', 50054), 2); s.close()"]
+      interval: 10s
+      timeout: 3s
+      retries: 6
+
+  llm:
+    <<: *python-service
+    command: ["python", "llm/llm_grpc_server.py"]
+    extra_hosts:
+      - "host.docker.internal:host-gateway"
+    environment:
+      <<: *python-common-env
+      LLM_GRPC_BIND_HOST: 0.0.0.0
+      LLM_GRPC_SERVER_PORT: 50053
+      LLM_GRPC_MAX_WORKERS: ${LLM_GRPC_MAX_WORKERS:-10}
+      LLM_ADMIN_BIND_HOST: 0.0.0.0
+      LLM_ADMIN_PORT: 18053
+      LLM_BASE_URL: ${LLM_BASE_URL:-}
+      LLM_API_KEY: ${LLM_API_KEY:-}
+      LLM_MODEL_NAME: ${LLM_MODEL_NAME:-qwen3-5-9b}
+      LLM_ROUTER_BASE_URL: ${LLM_ROUTER_BASE_URL:-}
+      LLM_ROUTER_API_KEY: ${LLM_ROUTER_API_KEY:-}
+      LLM_ROUTER_MODEL_NAME: ${LLM_ROUTER_MODEL_NAME:-}
+      LLM_TOOL_ROUTER_CLASSIFIER_MAX_TOKENS: ${LLM_TOOL_ROUTER_CLASSIFIER_MAX_TOKENS:-1}
+      LLM_TOOL_ROUTER_CLASSIFIER_TIMEOUT_MS: ${LLM_TOOL_ROUTER_CLASSIFIER_TIMEOUT_MS:-3000}
+      LLM_COMPLEX_WORKFLOW_ENABLED: ${LLM_COMPLEX_WORKFLOW_ENABLED:-false}
+      LLM_VISION_GATEWAY_BASE_URL: ${LLM_VISION_GATEWAY_BASE_URL:-http://host.docker.internal:8282}
+      LLM_VISION_GATEWAY_TOKEN: ${VISION_INTERNAL_TOKEN:-}
+      MCP_ENABLED: ${MCP_ENABLED:-true}
+      WEBSEARCH_API_KEY: ${WEBSEARCH_API_KEY:-}
+      ROBOTS_TASK_SERVICE_URL: ${ROBOTS_TASK_SERVICE_URL:-https://tour.windaka.com/mcp}
+      ROBOTS_TASK_SERVICE_AUTHORIZATION: ${ROBOTS_TASK_SERVICE_AUTHORIZATION:-}
+    ports:
+      - "${AI_VOICE_HOST_BIND_IP:-127.0.0.1}:${LLM_GRPC_HOST_PORT:-50053}:50053"
+      - "${AI_VOICE_HOST_BIND_IP:-127.0.0.1}:${LLM_ADMIN_HOST_PORT:-18053}:18053"
+    healthcheck:
+      test: ["CMD", "python", "-c", "import socket; s=socket.create_connection(('127.0.0.1', 50053), 2); s.close()"]
+      interval: 10s
+      timeout: 3s
+      retries: 6
+
+  tts:
+    <<: *python-service
+    command: ["python", "tts/tts_grpc_server.py"]
+    environment:
+      <<: *python-common-env
+      TTS_GRPC_BIND_HOST: 0.0.0.0
+      TTS_GRPC_SERVER_PORT: 50052
+      TTS_GRPC_MAX_WORKERS: ${TTS_GRPC_MAX_WORKERS:-5}
+      TTS_ADMIN_BIND_HOST: 0.0.0.0
+      TTS_ADMIN_PORT: 18052
+      QWEN3_TTS_CUSTOM_VOICE_WS_URL: ${QWEN3_TTS_CUSTOM_VOICE_WS_URL:-}
+      QWEN3_TTS_CUSTOM_VOICE_API_KEY: ${QWEN3_TTS_CUSTOM_VOICE_API_KEY:-}
+      QWEN3_TTS_CUSTOM_VOICE_MODEL: ${QWEN3_TTS_CUSTOM_VOICE_MODEL:-qwen3-tts}
+      QWEN3_TTS_BASE_WS_URL: ${QWEN3_TTS_BASE_WS_URL:-}
+      QWEN3_TTS_BASE_API_KEY: ${QWEN3_TTS_BASE_API_KEY:-}
+      QWEN3_TTS_BASE_MODEL: ${QWEN3_TTS_BASE_MODEL:-qwen3-tts-base}
+      LOCAL_QWEN3_TTS_SUPPORTED_VOICES: ${LOCAL_QWEN3_TTS_SUPPORTED_VOICES:-serena,aiden,dylan,eric,ono_anna,ryan,sohee,uncle_fu,vivian}
+      LOCAL_QWEN3_TTS_LANGUAGE: ${LOCAL_QWEN3_TTS_LANGUAGE:-Chinese}
+      LOCAL_QWEN3_TTS_SOURCE_SAMPLE_RATE: ${LOCAL_QWEN3_TTS_SOURCE_SAMPLE_RATE:-24000}
+      LOCAL_QWEN3_TTS_CONNECT_TIMEOUT_SEC: ${LOCAL_QWEN3_TTS_CONNECT_TIMEOUT_SEC:-8}
+      LOCAL_QWEN3_TTS_RECV_TIMEOUT_SEC: ${LOCAL_QWEN3_TTS_RECV_TIMEOUT_SEC:-60}
+      TTS_AUDIO_QUEUE_MAXSIZE: ${TTS_AUDIO_QUEUE_MAXSIZE:-100}
+      TTS_AUDIO_QUEUE_PUT_TIMEOUT_SEC: ${TTS_AUDIO_QUEUE_PUT_TIMEOUT_SEC:-2}
+    ports:
+      - "${AI_VOICE_HOST_BIND_IP:-127.0.0.1}:${TTS_GRPC_HOST_PORT:-50052}:50052"
+      - "${AI_VOICE_HOST_BIND_IP:-127.0.0.1}:${TTS_ADMIN_HOST_PORT:-18052}:18052"
+    healthcheck:
+      test: ["CMD", "python", "-c", "import socket; s=socket.create_connection(('127.0.0.1', 50052), 2); s.close()"]
+      interval: 10s
+      timeout: 3s
+      retries: 6
+
+  python-gateway:
+    <<: *python-service
+    command: ["python", "gateway/gateway_server.py"]
+    depends_on:
+      stt:
+        condition: service_healthy
+      llm:
+        condition: service_healthy
+      tts:
+        condition: service_healthy
+    environment:
+      <<: *python-common-env
+      GATEWAY_BIND_HOST: 0.0.0.0
+      GATEWAY_BIND_PORT: 7860
+      STT_SERVICE_URL: grpc://stt:50054
+      LLM_SERVICE_URL: grpc://llm:50053
+      TTS_SERVICE_URL: grpc://tts:50052
+      GATEWAY_REQUIRE_ROBOT_SECRET: ${GATEWAY_REQUIRE_ROBOT_SECRET:-true}
+      GATEWAY_REQUEST_QUEUE_MAXSIZE: ${GATEWAY_REQUEST_QUEUE_MAXSIZE:-1}
+      GATEWAY_STT_RPC_TIMEOUT_SEC: ${GATEWAY_STT_RPC_TIMEOUT_SEC:-15}
+      GATEWAY_LLM_STREAM_RPC_TIMEOUT_SEC: ${GATEWAY_LLM_STREAM_RPC_TIMEOUT_SEC:-120}
+      GATEWAY_TTS_STREAM_RPC_TIMEOUT_SEC: ${GATEWAY_TTS_STREAM_RPC_TIMEOUT_SEC:-120}
+      GATEWAY_COMPLEX_WORKFLOW_ENABLED: ${GATEWAY_COMPLEX_WORKFLOW_ENABLED:-false}
+      GATEWAY_WORKFLOW_RPC_TIMEOUT_SEC: ${GATEWAY_WORKFLOW_RPC_TIMEOUT_SEC:-30}
+      GATEWAY_WORKFLOW_STREAM_TIMEOUT_SEC: ${GATEWAY_WORKFLOW_STREAM_TIMEOUT_SEC:-120}
+      GATEWAY_WORKFLOW_PLAYBACK_TIMEOUT_SEC: ${GATEWAY_WORKFLOW_PLAYBACK_TIMEOUT_SEC:-30}
+      LLM_TTS_IDLE_TIMEOUT_SEC: ${LLM_TTS_IDLE_TIMEOUT_SEC:-20}
+      LLM_TTS_THREAD_JOIN_TIMEOUT_SEC: ${LLM_TTS_THREAD_JOIN_TIMEOUT_SEC:-5}
+      GATEWAY_TURN_GATE_SHADOW_ENABLED: ${GATEWAY_TURN_GATE_SHADOW_ENABLED:-false}
+      GATEWAY_TURN_GATE_ACTIVE_ENABLED: ${GATEWAY_TURN_GATE_ACTIVE_ENABLED:-false}
+      GATEWAY_TURN_GATE_MODELS_ENABLED: ${GATEWAY_TURN_GATE_MODELS_ENABLED:-false}
+      GATEWAY_TURN_GATE_SMART_MODEL_PATH: ${GATEWAY_TURN_GATE_SMART_MODEL_PATH:-/app/turn-gate/models/smart-turn-v3.2/smart-turn-v3.2-cpu.onnx}
+      GATEWAY_TURN_GATE_EOU_MODEL_DIR: ${GATEWAY_TURN_GATE_EOU_MODEL_DIR:-/app/turn-gate/models/livekit-eou-v0.4.1-intl}
+      GATEWAY_TURN_GATE_SMART_THRESHOLD: ${GATEWAY_TURN_GATE_SMART_THRESHOLD:-0.5}
+      GATEWAY_TURN_GATE_EOU_THRESHOLD: ${GATEWAY_TURN_GATE_EOU_THRESHOLD:-0.0066}
+      GATEWAY_BARGE_IN_ENABLED: ${GATEWAY_BARGE_IN_ENABLED:-true}
+      SINGING_CATALOG_PATH: ${SINGING_CATALOG_PATH:-/app/singing/catalog.json}
+      SINGING_VOICES_PATH: ${SINGING_VOICES_PATH:-/app/singing/voices.json}
+      SINGING_AUDIO_ROOT: /app/singing/audio
+    volumes:
+      - "${SINGING_AUDIO_HOST_DIR:-../../singing/audio}:/app/singing/audio:ro"
+    ports:
+      - "${AI_VOICE_HOST_BIND_IP:-127.0.0.1}:${PYTHON_GATEWAY_HOST_PORT:-7860}:7860"
+    healthcheck:
+      test: ["CMD", "python", "-c", "import urllib.request; urllib.request.urlopen('http://127.0.0.1:7860/healthz', timeout=2).read()"]
+      interval: 10s
+      timeout: 3s
+      retries: 6
+
+  admin:
+    <<: *python-service
+    command: ["python", "admin-ui/backend/app.py"]
+    depends_on:
+      python-gateway:
+        condition: service_healthy
+      llm:
+        condition: service_healthy
+      tts:
+        condition: service_healthy
+    environment:
+      <<: *python-common-env
+      ADMIN_API_HOST: 0.0.0.0
+      ADMIN_API_PORT: 18100
+      ADMIN_USERNAME: ${ADMIN_USERNAME:-admin}
+      ADMIN_PASSWORD: ${ADMIN_PASSWORD:-}
+      ADMIN_SESSION_SECRET: ${ADMIN_SESSION_SECRET:-}
+      ADMIN_SESSION_TTL_SECONDS: ${ADMIN_SESSION_TTL_SECONDS:-43200}
+      ADMIN_COOKIE_SECURE: ${ADMIN_COOKIE_SECURE:-false}
+      ADMIN_AUTH_DISABLED: ${ADMIN_AUTH_DISABLED:-false}
+      LLM_INTERNAL_BASE_URL: http://llm:18053
+      GATEWAY_INTERNAL_BASE_URL: http://python-gateway:7860
+      TTS_INTERNAL_BASE_URL: http://tts:18052
+    ports:
+      - "${AI_VOICE_HOST_BIND_IP:-127.0.0.1}:${ADMIN_API_HOST_PORT:-18100}:18100"
+    healthcheck:
+      test: ["CMD", "python", "-c", "import urllib.request; urllib.request.urlopen('http://127.0.0.1:18100/health', timeout=2).read()"]
+      interval: 10s
+      timeout: 3s
+      retries: 6
+
+networks:
+  ai-voice-net:
+    name: ${AI_VOICE_DOCKER_NETWORK:-wzk-ai-net}
+    external: true

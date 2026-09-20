@@ -1,0 +1,99 @@
+syntax = "proto3";
+
+package workflow;
+
+// 独立复杂任务服务；不得改变现有 LLMService.StreamChat。
+service WorkflowService {
+  rpc ClassifyComplex(ClassifyComplexRequest) returns (ClassifyComplexResponse);
+  rpc PlanComplex(PlanComplexRequest) returns (PlanComplexResponse);
+  rpc ExecuteStep(ExecuteStepRequest) returns (ExecuteStepResponse);
+  rpc StreamSynthesis(SynthesisRequest) returns (stream SynthesisChunk);
+  rpc CancelWorkflow(CancelWorkflowRequest) returns (CancelWorkflowResponse);
+}
+
+message ClassifyComplexRequest {
+  string text = 1;
+  string session_id = 2;
+  string bot_id = 3;
+  string robot_id = 4;
+  string trace_id = 5;
+  string round_id = 6;
+}
+
+message ClassifyComplexResponse {
+  bool success = 1;
+  bool complex = 2;
+  string route_kind = 3;
+  string category = 4;
+  string source = 5;
+  string error_code = 6;
+  string message = 7;
+}
+
+message PlanComplexRequest {
+  string text = 1;
+  string session_id = 2;
+  string bot_id = 3;
+  string robot_id = 4;
+  string trace_id = 5;
+  string round_id = 6;
+}
+
+message PlanComplexResponse {
+  bool success = 1;
+  string plan_id = 2;
+  string plan_json = 3;
+  int32 attempts = 4;
+  string error_code = 5;
+  string message = 6;
+}
+
+message ExecuteStepRequest {
+  string plan_id = 1;
+  string step_id = 2;
+  string session_id = 3;
+  string robot_id = 4;
+  string trace_id = 5;
+  string round_id = 6;
+  bool playback_completed = 7;
+  string playback_id = 8;
+}
+
+message ExecuteStepResponse {
+  bool success = 1;
+  string status = 2;
+  string result_json = 3;
+  string error_code = 4;
+  string message = 5;
+  bool terminal = 6;
+  bool exit = 7;
+}
+
+message SynthesisRequest {
+  string plan_id = 1;
+  string session_id = 2;
+  string bot_id = 3;
+  string robot_id = 4;
+  string trace_id = 5;
+  string round_id = 6;
+  string playback_id = 7;
+}
+
+message SynthesisChunk {
+  string text = 1;
+  bool is_final = 2;
+  string metrics_json = 3;
+  string error_code = 4;
+}
+
+message CancelWorkflowRequest {
+  string plan_id = 1;
+  string session_id = 2;
+  string reason = 3;
+}
+
+message CancelWorkflowResponse {
+  bool success = 1;
+  bool cancelled = 2;
+  string message = 3;
+}

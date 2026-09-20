@@ -1,0 +1,6 @@
+name: ai-voice-v3
+
+include:
+  - path: ./deploy/compose/business.yml
+  - path: ./deploy/compose/go-gateway.host.yml
+  - path: ./deploy/compose/mcp.yml

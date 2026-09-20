@@ -1,0 +1,63 @@
+{
+  "schema_version": "singing-score-asset/v1",
+  "song_id": "009",
+  "slug": "pugongying",
+  "title": "蒲公英的约定",
+  "artist": "周杰伦",
+  "status": "OWNER_LISTENING_ACCEPTED",
+  "method": {
+    "engine": "SoulX-Singer",
+    "task": "SVS",
+    "control": "continuous_f0",
+    "voice_id": "serena-v1",
+    "source_performance_artist": "朵拉儿（内嵌标签：笑笑糖）",
+    "fixed_reference": true,
+    "candidate_seeds": [88405783, 72943910, 56941294, 72571494, 48500562]
+  },
+  "segments": [
+    {
+      "id": "chunk-01",
+      "score": "chunks/chunk-01.soulx.json",
+      "lyrics": "却不知道到底能去哪里",
+      "duration_seconds": 7.21,
+      "pitch_shift": -5,
+      "selected_seed": 72943910,
+      "sha256": "bbb9e79bb2f7727ae36b59636a6f4426c737ed91f84fb90485b160859e720017"
+    },
+    {
+      "id": "chunk-02",
+      "score": "chunks/chunk-02.soulx.json",
+      "lyrics": "一起长大的约定那样清晰",
+      "duration_seconds": 8.52,
+      "pitch_shift": -7,
+      "selected_seed": 88405783,
+      "sha256": "d1e465c3db05252490629e460e99f93d3c3cf06f8adfaa91af49f45ec45244f1"
+    },
+    {
+      "id": "chunk-03",
+      "score": "chunks/chunk-03.soulx.json",
+      "lyrics": "打过勾的我相信说好要一起旅行",
+      "duration_seconds": 10.41,
+      "pitch_shift": -7,
+      "selected_seed": 72571494,
+      "sha256": "4b0cf6b11be704a384a90e6776a5dcb7115269e7ca1fe5faecffc67b40885064"
+    },
+    {
+      "id": "chunk-04",
+      "score": "chunks/chunk-04.soulx.json",
+      "lyrics": "是你如今唯一坚持的任性",
+      "duration_seconds": 9.35,
+      "pitch_shift": -6,
+      "selected_seed": 72571494,
+      "sha256": "9e12f3c2422940713ee79dc0a4cb7b7c68611443fc1e09623f88b310579fd26f"
+    }
+  ],
+  "playback": {
+    "asset": "serena/009-pugongying.wav",
+    "duration_seconds": 35.49,
+    "sample_rate": 16000,
+    "channels": 1,
+    "sample_format": "pcm_s16le",
+    "sha256": "1fcc1b8270ca1ea629212645f50cefd52167e53fdc98d35cee7ee0cf804f5ad2"
+  }
+}

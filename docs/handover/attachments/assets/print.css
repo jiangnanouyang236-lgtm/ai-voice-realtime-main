@@ -1,0 +1,30 @@
+@page { size: A4; margin: 17mm 16mm 18mm; }
+* { box-sizing: border-box; }
+html { color: #111; background: white; }
+body { font-family: 'Songti SC', 'SimSun', 'Noto Serif CJK SC', serif; font-size: 10.5pt; line-height: 1.5; margin: 0; }
+h1, h2, h3, h4 { font-family: 'PingFang SC', 'Microsoft YaHei', sans-serif; color: #111; line-height: 1.4; page-break-after: avoid; break-after: avoid; }
+h1 { font-size: 19pt; margin: 0 0 15pt; padding-bottom: 10pt; border-bottom: 2px solid #303030; }
+h2 { font-size: 13.5pt; margin: 17pt 0 8pt; }
+h3 { font-size: 11.3pt; margin: 12pt 0 6pt; }
+p { margin: 6pt 0; orphans: 3; widows: 3; }
+li { margin: 3pt 0; orphans: 2; widows: 2; }
+ul, ol { padding-left: 1.6em; margin: 6pt 0; }
+a { color: inherit; text-decoration: none; overflow-wrap: anywhere; }
+strong { font-family: 'PingFang SC', sans-serif; font-weight: 600; }
+table { width: 100%; table-layout: fixed; border-collapse: collapse; margin: 8pt 0 11pt; font-size: 9.1pt; line-height: 1.5; }
+thead { display: table-header-group; }
+th, td { border: 0.65pt solid #737373; padding: 3.5pt 6pt; vertical-align: top; overflow-wrap: anywhere; word-break: normal; }
+th { background: #eee; font-family: 'PingFang SC', sans-serif; font-weight: 600; }
+tr { break-inside: avoid; page-break-inside: avoid; }
+pre { border: 0.6pt solid #aaa; padding: 9pt; margin: 8pt 0; white-space: pre-wrap; overflow-wrap: anywhere; word-break: break-all; font-size: 8.5pt; line-height: 1.55; break-inside: avoid; }
+code { font-family: 'Menlo','PingFang SC',monospace; font-size: .86em; overflow-wrap: anywhere; }
+pre code { font-size: inherit; }
+img { max-width: 100%; max-height: 155mm; display: block; margin: 8pt auto; break-inside: avoid; }
+figure { margin: 8pt 0; break-inside: avoid; }
+figcaption { font-size: 9pt; text-align: center; color: #444; }
+blockquote { border-left: 2pt solid #777; margin: 8pt 0; padding-left: 10pt; }
+input[type=checkbox] { appearance: none; width: 9pt; height: 9pt; border: .7pt solid #333; margin: 0 5pt 0 0; vertical-align: baseline; }
+.signature-block { break-inside: avoid; page-break-inside: avoid; }
+
+.signature-block { margin-top: 12pt; padding-top: 4pt; border-top: .6pt solid #aaa; }
+.signature-block p { margin: 10pt 0; }

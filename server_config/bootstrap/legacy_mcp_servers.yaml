@@ -1,0 +1,32 @@
+# Legacy bootstrap source for seeding the server-config database.
+# Runtime on the server-config branch should load from the database instead of this file.
+
+mcp_servers:
+  utils_remote:
+    display_name: "远程工具集"
+    type: "sse"
+    url: "http://127.0.0.1:5004/mcp"
+
+  robot_remote:
+    display_name: "远程机器人控制"
+    type: "sse"
+    url: "http://127.0.0.1:5003/mcp"
+
+  singing_remote:
+    display_name: "AI 唱歌"
+    type: "sse"
+    url: "http://127.0.0.1:5005/mcp"
+
+  websearch:
+    display_name: "百炼联网搜索"
+    type: "streamable_http"
+    url: "https://dashscope.aliyuncs.com/api/v1/mcps/WebSearch/mcp"
+    headers:
+      Authorization: "Bearer ${WEBSEARCH_API_KEY}"
+
+  robots_task_service:
+    display_name: "机器人任务服务"
+    type: "streamable_http"
+    url: "https://tour.windaka.com/mcp"
+    headers:
+      Authorization: "${ROBOTS_TASK_SERVICE_AUTHORIZATION}"
